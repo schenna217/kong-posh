@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
+import {Home} from './screens/Home'
+import {SignIn} from './screens/SignIn'
+import {SignUp} from './screens/SignUp'
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
