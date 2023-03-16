@@ -1,7 +1,6 @@
 import React from "react";
 import {StyleSheet} from 'react-native'
-import Button from './components/Button'
-import Picture from './components/Picture'
+
 
 
 export default function HomeScreen({navigation}) {
