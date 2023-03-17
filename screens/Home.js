@@ -1,6 +1,6 @@
 import React from "react";
 import {StyleSheet} from 'react-native'
-
+import Button from '../components/Button'
 
 
 export default function Home({navigation}) {
