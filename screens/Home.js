@@ -1,6 +1,8 @@
 import React from "react";
 import {StyleSheet, View} from 'react-native'
 import Button from '../components/Button'
+import SignIn from '../screens/SignIn'
+import SignUp from '../screens/SignUp'
 
 
 export default function Home({navigation}) {
