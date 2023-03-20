@@ -22,9 +22,17 @@ export default function App() {
                 let rn = route.name
   
                 if (rn == "Home")
+<<<<<<< Updated upstream
                   return <Entypo name="home" size={24} color="black" />
                 if (rn == "Cart")
                   return <FontAwesome5 name="opencart" size={24} color="black" />
+=======
+                  return <FontAwesome5 name={'file-invoice-dollar'} size={24} color={c} />
+                else if (rn == "SignIn")
+                  return <FontAwesome5 name={'info-circle'} size={24} color={c} />
+                else if (rn == "SignUp")
+                  return <FontAwesome5 name={'money-check-alt'} size={24} color={c} />
+>>>>>>> Stashed changes
                 return <FontAwesome5 name={'sign-out-alt'} size={24} color={c} />
   
               },
@@ -36,7 +44,12 @@ export default function App() {
         >
           <Screen name="Home" component={Home}/>
           <Screen name="SignIn" component={SignIn}/>
+<<<<<<< Updated upstream
           <Screen name="Cart" component={Cart}/>
+=======
+          {/* <Screen name="SignUp" component={SignUp}/>
+          <Screen name="Cart" component={Cart}/> */}
+>>>>>>> Stashed changes
         </Navigator>
       </NavigationContainer>
       <StatusBar style="auto"/>
