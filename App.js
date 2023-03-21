@@ -13,6 +13,7 @@ const {Navigator, Screen} = createBottomTabNavigator();
 export default function App() {
   return (
     <>
+    
       <NavigationContainer>
         <Navigator 
           screenOptions={
@@ -22,15 +23,10 @@ export default function App() {
                 let rn = route.name
   
                 if (rn == "Home") {
-                  return <Entypo name="home" size={24} color="black" />
+                  return <Entypo name="home" size={24} color={c} />
                 } else if (rn == "Cart") {
-                  return <FontAwesome5 name="opencart" size={24} color="black" />
-                } else if (rn == "SignIn") {
-                  return <FontAwesome5 name={'info-circle'} size={24} color={c} />
-                }
-                else if (rn == "SignUp"){
-                  return <FontAwesome5 name={'money-check-alt'} size={24} color={c} />
-                }
+                  return <Entypo name="shopping-cart" size={24} color={c} />
+                } 
               },
               tabBarShowLabel: false,
               headerShown: false,
@@ -38,6 +34,7 @@ export default function App() {
           }
           initialRouteName={"Home"}
         >
+         
           <Screen name="Home" component={Home}/>
           <Screen name="SignIn" component={SignIn}/>
           <Screen name="Cart" component={Cart}/>
