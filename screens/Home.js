@@ -9,13 +9,23 @@ export default function Home({navigation}) {
   return (
     <View style={styles.container}>
         <Button
-            title = 'Sign Up'
+            title = 'SignUp'
             onPress={() => navigation.navigate('SignUp')}
             backgroundColor="orange"  
         />
         <Button
-            title = 'Sign In'
-            onPress={() => navigation.navigate('SignIn')}
+            title = 'SignIn'
+            onPress={() => navigation.navigate(SignIn)}
+            backgroundColor="orange"  
+        />
+        <Button
+            title = 'Menu'
+            onPress={() => navigation.navigate('Menu')}
+            backgroundColor="orange"  
+        />
+        <Button
+            title = 'Item'
+            onPress={() => navigation.navigate('Item')}
             backgroundColor="orange"  
         />
     </View>
