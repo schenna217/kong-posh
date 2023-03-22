@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather, Entypo, FontAwesome5 } from '@expo/vector-icons';
+import { Feather, Entypo, FontAwesome } from '@expo/vector-icons';
 import Home from './screens/Home'
 import SignIn from './screens/SignIn'
 import SignUp from './screens/SignUp'
@@ -28,6 +28,10 @@ export default function App() {
                   return <Entypo name="home" size={24} color={c} />
                 } else if (rn == "Cart") {
                   return <Entypo name="shopping-cart" size={24} color={c} />
+                } else if (rn == "SignUp") {
+                  return <FontAwesome name="arrow-circle-up" size={24} color="black" />
+                } else if (rn == "SignIn") {
+                  return <Entypo name="login" size={24} color="black" />
                 } 
               },
               tabBarShowLabel: false,
@@ -44,8 +48,6 @@ export default function App() {
           <Screen name="Item" component={Item}/>
           <Screen name="Cart" component={Cart}/>
 
-          {/* <Screen name="SignUp" component={SignUp}/>
-          <Screen name="Cart" component={Cart}/> */}
         </Navigator>
       </NavigationContainer>
       <StatusBar style="auto"/>
