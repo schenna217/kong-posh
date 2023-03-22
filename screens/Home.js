@@ -3,6 +3,8 @@ import {StyleSheet, View} from 'react-native'
 import Button from '../components/Button'
 import SignIn from '../screens/SignIn'
 import SignUp from '../screens/SignUp'
+import Menu from '../screens/Menu'
+import Item from '../screens/Item'
 
 
 export default function Home({navigation}) {
@@ -10,7 +12,7 @@ export default function Home({navigation}) {
     <View style={styles.container}>
         <Button
             title = 'SignUp'
-            onPress={() => navigation.navigate('SignUp')}
+            onPress={() => navigation.navigate(SignUp)}
             backgroundColor="orange"  
         />
         <Button
@@ -20,12 +22,12 @@ export default function Home({navigation}) {
         />
         <Button
             title = 'Menu'
-            onPress={() => navigation.navigate('Menu')}
+            onPress={() => navigation.navigate(Menu)}
             backgroundColor="orange"  
         />
         <Button
             title = 'Item'
-            onPress={() => navigation.navigate('Item')}
+            onPress={() => navigation.navigate(Item)}
             backgroundColor="orange"  
         />
     </View>

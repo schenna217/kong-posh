@@ -7,7 +7,8 @@ import Home from './screens/Home'
 import SignIn from './screens/SignIn'
 import SignUp from './screens/SignUp'
 import Cart from './screens/Cart'
-import { Menu } from 'react-native-paper';
+import Item from './screens/Item'
+import Menu from './screens/Menu';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -41,6 +42,7 @@ export default function App() {
           <Screen name="SignUp" component={SignUp}/>
           <Screen name="Menu" component={Menu}/>
           <Screen name="Item" component={Item}/>
+          <Screen name="Cart" component={Cart}/>
 
           {/* <Screen name="SignUp" component={SignUp}/>
           <Screen name="Cart" component={Cart}/> */}
