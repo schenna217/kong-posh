@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Feather, Entypo, FontAwesome } from '@expo/vector-icons';
+import { Feather, Entypo, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import Home from './screens/Home'
 import SignIn from './screens/SignIn'
 import SignUp from './screens/SignUp'
@@ -32,7 +32,11 @@ export default function App() {
                   return <FontAwesome name="arrow-circle-up" size={24} color="black" />
                 } else if (rn == "SignIn") {
                   return <Entypo name="login" size={24} color="black" />
-                } 
+                } else if (rn == "Menu") {
+                  return <FontAwesome name="apple" size={24} color="black" />
+                } else if (rn == "Item") {
+                  return <MaterialCommunityIcons name="food-drumstick" size={24} color="black" />
+                }
               },
               tabBarShowLabel: false,
               headerShown: false,
