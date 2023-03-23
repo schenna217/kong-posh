@@ -13,7 +13,7 @@ import Menu from './screens/Menu';
 const {Navigator, Screen} = createBottomTabNavigator();
 
 export default function App() {
-  return (
+  return(
     <>
     
       <NavigationContainer>
@@ -54,6 +54,7 @@ export default function App() {
     </>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

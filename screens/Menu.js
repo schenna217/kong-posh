@@ -1,12 +1,12 @@
-import React from 'react'
-import { View } from 'react-native'
+import React from 'react';
+import {View, Text, SafeAreaView} from "react-native";
+import HeaderTabs from '../components/HeaderTabs';
 
-const Menu = () => {
-    return (
-        <View>
-            
-        </View>
-    )
+export default function Meals(){
+    return(
+        <SafeAreaView>
+            <HeaderTabs/>
+        </SafeAreaView>
+    );
+    
 }
-
-export default Menu
