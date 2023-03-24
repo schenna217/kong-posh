@@ -13,7 +13,15 @@ const Cart = () => {
         {name: 'Item 5', key: 5},
         {name: 'Item 6', key: 6},
         {name: 'Item 7', key: 7},
-        {name: 'Item 8', key: 8}
+        {name: 'Item 8', key: 8},
+        {name: 'Item 9', key: 9},
+        {name: 'Item 10', key: 10},
+        {name: 'Item 11', key: 11},
+        {name: 'Item 12', key: 12},
+        {name: 'Item 13', key: 13},
+        {name: 'Item 14', key: 14},
+        {name: 'Item 15', key: 15},
+        {name: 'Item 16', key: 16}
     
     ];
 
@@ -58,6 +66,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: 'dodgerblue',
         fontWeight: 'bold',
+        marginLeft: 180,
+        marginTop: 130,
     },
     text:{
         fontSize: 16,
