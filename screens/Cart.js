@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Button from '../components/Button'
 import Item from './Item'
+import RestarauntCard from '../components/RestaurantCard'
 
 const Cart = () => {
 
@@ -38,13 +39,9 @@ const Cart = () => {
                 $$$$$$$
             </Text>
             <ScrollView>
-                {names.map( name => {
-                    return(
-                        <View key={ name.key } >
-                            <Text style={styles.listText}>{name.name}</Text>
-                        </View>
-                    );
-                })}
+               <RestarauntCard>
+                   
+               </RestarauntCard>
             </ScrollView>
         </View>
     )
