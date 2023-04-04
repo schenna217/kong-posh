@@ -10,7 +10,6 @@ export default function Menu(){
             <Button
             title = 'Menu'
             //onPress={() => navigation.navigate('SignIn')}
-            backgroundColor="orange"  
         />
         </SafeAreaView>
     );

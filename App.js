@@ -9,6 +9,7 @@ import SignUp from './screens/SignUp'
 import Cart from './screens/Cart'
 import Item from './screens/Item'
 import Menu from './screens/Menu';
+import colors from './config/colors';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ export default function App() {
           screenOptions={
             ({ route }) => ({
               tabBarIcon: ({ focused, }) => {
-                let c = focused ? 'red' : 'green';
+                let c = focused ? colors.primary: "black";
                 let rn = route.name
   
                 if (rn == "Home") {
@@ -29,13 +30,13 @@ export default function App() {
                 } else if (rn == "Cart") {
                   return <Entypo name="shopping-cart" size={24} color={c} />
                 } else if (rn == "SignUp") {
-                  return <FontAwesome name="arrow-circle-up" size={24} color="black" />
+                  return <FontAwesome name="arrow-circle-up" size={24} color={c} />
                 } else if (rn == "SignIn") {
-                  return <Entypo name="login" size={24} color="black" />
+                  return <Entypo name="login" size={24} color={c} />
                 } else if (rn == "Menu") {
-                  return <FontAwesome name="apple" size={24} color="black" />
+                  return <FontAwesome name="apple" size={24} color={c} />
                 } else if (rn == "Item") {
-                  return <MaterialCommunityIcons name="food-drumstick" size={24} color="black" />
+                  return <MaterialCommunityIcons name="food-drumstick" size={24} color={c} />
                 }
               },
               tabBarShowLabel: false,

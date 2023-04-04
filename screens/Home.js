@@ -13,7 +13,7 @@ export default function Home({navigation}) {
         <Button
             title = 'SignUp'
             onPress={() => navigation.navigate(SignUp)}
-            backgroundColor="orange"  
+            //backgroundColor="orange"  
         />
         <Button
             title = 'SignIn'
