@@ -9,3 +9,6 @@ React Native Paper Installs (4/2/2023)
         npx pod-install
     npm install react-native-vector-icons
      
+Firebase Installs
+    npm install @react-navigation/native
+    npx expo install firebase
