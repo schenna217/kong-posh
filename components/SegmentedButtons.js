@@ -2,7 +2,11 @@ import * as React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 
+<<<<<<< Updated upstream
 const SegmentedButtons = () => {
+=======
+const VegOrNonButton = () => {
+>>>>>>> Stashed changes
   const [value, setValue] = React.useState('');
 
   return (

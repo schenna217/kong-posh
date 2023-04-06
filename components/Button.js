@@ -20,14 +20,16 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 5,
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     borderWidth: 2,
     backgroundColor: "#FD8653",
     borderRadius: 10,
+    borderColor: 'white',
   },
   text: {
       fontWeight: 'bold',
       fontSize: 15,
+      color: 'white',
   },
 
 })

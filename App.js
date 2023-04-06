@@ -43,7 +43,7 @@ export default function App() {
               headerShown: false,
             })
           }
-          initialRouteName={"Home"}
+          initialRouteName={"SignUp"}
         >
          
           <Screen name="Home" component={Home}/>

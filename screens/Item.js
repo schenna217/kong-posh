@@ -9,7 +9,6 @@ const Item = () => {
             <Button
             title = 'Item'
             //onPress={() => navigation.navigate('SignIn')}
-            backgroundColor="orange"  
         />
         </View>
     )
