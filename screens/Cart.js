@@ -1,30 +1,11 @@
 import React from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { Image, View, Text, StyleSheet, ScrollView } from 'react-native'
 import Button from '../components/Button'
 import Item from './Item'
-import RestarauntCard from '../components/RestaurantCard'
+import RestaurantCard, { setDescription } from '../components/RestaurantCard'
 
 const Cart = () => {
 
-    const names = [
-        {name: 'Item 1', key: 1},
-        {name: 'Item 2', key: 2},
-        {name: 'Item 3', key: 3},
-        {name: 'Item 4', key: 4},
-        {name: 'Item 5', key: 5},
-        {name: 'Item 6', key: 6},
-        {name: 'Item 7', key: 7},
-        {name: 'Item 8', key: 8},
-        {name: 'Item 9', key: 9},
-        {name: 'Item 10', key: 10},
-        {name: 'Item 11', key: 11},
-        {name: 'Item 12', key: 12},
-        {name: 'Item 13', key: 13},
-        {name: 'Item 14', key: 14},
-        {name: 'Item 15', key: 15},
-        {name: 'Item 16', key: 16}
-    
-    ];
 
 
     return (
@@ -39,9 +20,11 @@ const Cart = () => {
                 $$$$$$$
             </Text>
             <ScrollView>
-               <RestarauntCard>
-                   
-               </RestarauntCard>
+               <RestaurantCard
+                   picture = 'require(../assets/google.png)'
+                   name = "Miheer"
+                   description = "Its good"
+               />
             </ScrollView>
         </View>
     )

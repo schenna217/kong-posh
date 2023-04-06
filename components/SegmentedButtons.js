@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { SegmentedButtons } from 'react-native-paper';
 
-const MyComponent = () => {
+const SegmentedButtons = () => {
   const [value, setValue] = React.useState('');
 
   return (
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyComponent;
+export default SegmentedButtons;

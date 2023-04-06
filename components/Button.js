@@ -1,12 +1,12 @@
 import React from "react";
 import { TouchableHighlight, Text, StyleSheet} from 'react-native'
-import colors from "../config/colors";
+
 
 function Button({title, onPress, }) {
   return (
     <TouchableHighlight
       onPress={onPress}
-      style={[styles.button, {backgroundColor: colors.primary}]}>
+      style={[styles.button, {backgroundColor: "#FD8653"}]}>
       <Text style={styles.text}>{title}</Text>
       </TouchableHighlight>
   );
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-end',
     borderWidth: 2,
-    backgroundColor: colors.primary,
+    backgroundColor: "#FD8653",
     borderRadius: 10,
   },
   text: {

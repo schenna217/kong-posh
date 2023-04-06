@@ -1,22 +1,23 @@
-import React from 'react';
+import {React , useState} from 'react';
 import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
 
 
 
 
-const RestarauntCard = () => {
+
+const RestaurantCard = ({picture, name, description}) => {
     return (
         <View style={styles.cardContainer}>
            <Image
              style={styles.imageStyle}
-             source={require('../assets/adaptive-icon.png')}
+             source={picture}
            />
           <View style={styles.infoStyle}>
            <Text style={styles.titleStyle}>
-             Goat Curry
+             {name}
            </Text>
            <Text>
-             Bakery, Pastries, Cafe
+             {description}
            </Text>
           </View>
         </View>
@@ -30,10 +31,10 @@ const styles = StyleSheet.create({
     cardContainer: {
         width: deviceWidth - 25,
         backgroundColor: '#FD9163',
-        height: 200,
+        height: 300,
         borderRadius: 20,
-
-
+        marginHorizontal: 10,
+        justifyContent: 'center',
         shadowColor: '#000',
         shadowOffset: {
             width: 5,
@@ -44,13 +45,13 @@ const styles = StyleSheet.create({
         elevation: 9,
     },
     imageStyle: {
-        height: 130,
+        height: 230,
         width: deviceWidth - 25,
         borderTopLeftRadius: 20,
+        marginHorizontal: 10,
         borderTopRightRadius: radius,
         borderTopRightRadius: radius,
         opacity: 0.9,
-        alignContent: 'center',
         alignSelf: 'center'
     },
     titleStyle: {
@@ -67,5 +68,5 @@ const styles = StyleSheet.create({
 });
 
 
-export default RestarauntCard;
+export default RestaurantCard;
 
