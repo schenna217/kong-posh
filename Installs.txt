@@ -2,11 +2,10 @@ Code for Tunnel
     npm i @expo/ngrok@^4.1.0
     npx expo start --tunnel
 
-React Native Paper Installs (4/2/2023)
+React Native Paper Installs (https://callstack.github.io/react-native-paper/docs/guides/getting-started/)
     npm install react-native-paper
     npm install react-native-safe-area-context
-    For ios only:
-        npx pod-install
+        npx pod-install (For ios only)
     npm install react-native-vector-icons
      
 Firebase Installs
