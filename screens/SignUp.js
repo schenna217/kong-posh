@@ -1,38 +1,73 @@
-import React from 'react'
-
-import { View } from 'react-native'
-
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text, TextInput } from 'react-native'
 import Button from '../components/Button';
 import {auth} from '../firebase';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { useNavigation } from '@react-navigation/core';
+import Email from '../Email';
+import Password from '../Password';
 
 
 
 const SignUp = () => {
     
+    const {email, setEmail} = Email()
+    const {password, setPassword} = Password()
+    const navigation = useNavigation()
+
+    const goToSignIn = () => {
+        navigation.navigate("SignIn")
+    }
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if(user){
+                navigation.navigate("Home")
+            }
+        })
+
+        return unsubscribe
+    }, [])
+
+    const signUp = () => {
+        console.log("Signing Up");
+        try {
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(userCredientals => {
+                    const user = userCredientals.user;
+                    console.log("Signed up with " + user.email)
+                })
+        }
+        catch(error){
+            console.log("SignUp didn't work: " + error.message);
+        }
+    }
+
     return (
-
-        
-            
-
         <View style={styles.container}>
             <Text>Sign Up</Text>
             <View style = {styles.inputContainer}>
                 <TextInput
                     placeholder="Email"
+                    value={email}
+                    onChangeText={text => setEmail(text)}
                     style={styles.input}
                 />
                 <TextInput
                     placeholder="Password"
+                    value={password}
+                    onChangeText={text => setPassword(text)}
                     style={styles.input}
                 />
             </View>
             <Button
                 title = "Sign Up"
+                onPress={signUp}
             />
-
+            <Button
+                title="Already have an account?"
+                onPress={goToSignIn}
+            />
         </View>
     )
 }
@@ -58,5 +93,6 @@ const styles = StyleSheet.create({
         marginTop: 30,
     }, 
 });
+
 export default SignUp
 

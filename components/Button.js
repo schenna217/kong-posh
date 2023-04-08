@@ -15,7 +15,7 @@ function Button({title, onPress, }) {
 const styles = StyleSheet.create({
   button: {
     height: 40,
-    width: 100,
+    width: 200,
     fontWeight: 'bold',
     margin: 10,
     padding: 5,
