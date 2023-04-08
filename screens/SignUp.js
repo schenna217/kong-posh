@@ -1,22 +1,22 @@
 import React from 'react'
-<<<<<<< HEAD
+
 import { View } from 'react-native'
-=======
+
 import { StyleSheet, View, Text, TextInput } from 'react-native'
 import Button from '../components/Button';
 import {auth} from '../firebase';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { useNavigation } from '@react-navigation/core';
 
->>>>>>> f777baddb74d9adc91fbc960c0c08f732bec6246
+
 
 const SignUp = () => {
     
     return (
-<<<<<<< HEAD
-        <View>
+
+        
             
-=======
+
         <View style={styles.container}>
             <Text>Sign Up</Text>
             <View style = {styles.inputContainer}>
@@ -32,14 +32,14 @@ const SignUp = () => {
             <Button
                 title = "Sign Up"
             />
->>>>>>> f777baddb74d9adc91fbc960c0c08f732bec6246
+
         </View>
     )
 }
 
-<<<<<<< HEAD
-export default SignUp
-=======
+
+
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
     }, 
 });
 export default SignUp
->>>>>>> f777baddb74d9adc91fbc960c0c08f732bec6246
+
