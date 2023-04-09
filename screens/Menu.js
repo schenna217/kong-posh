@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet,ScrollView } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import HeaderTabs from '../components/HeaderTabs';
 
 export default function Menu(){
     return(
-        <View style={styles.container}>
-            <HeaderTabs style={styles.HeaderTabs}/>
-            <Searchbar style={styles.searchBar} placeholder="Search"/>
-            {/* Other content */}
-        </View>
+        <ScrollView Vertical>
+            <View style={styles.container}>
+                <HeaderTabs style={styles.HeaderTabs}/>
+                <Searchbar style={styles.searchBar} placeholder="Search"/>
+                {/* Other content */}
+            </View>
+        </ScrollView>
+        
     );
 }
 
