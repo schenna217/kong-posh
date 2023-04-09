@@ -39,7 +39,8 @@ const SignIn = () => {
 
     return (
         <View style={styles.container}>
-            <Text>Sign In</Text>
+            <Text style = {styles.welcomeText}>Welcome to Kong Posh!</Text>
+            {/* <Text>Please sign in</Text> */}
             <View style = {styles.inputContainer}>
                 <TextInput
                     placeholder="Email"
@@ -67,18 +68,23 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 50,
+        //paddingTop: 50,
     }, inputContainer: {
         margin: 30,
         width: '80%',
-        alignItems: 'center'
+        alignItems: 'center',
     }, input: {
         backgroundColor: 'white',
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,
         marginTop: 30,
-    }, 
+        width: 250,
+    }, welcomeText: {
+        fontSize: 24,
+        alignItems: 'center',
+        paddingVertical: 20,
+    }
 });
 
 

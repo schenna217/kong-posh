@@ -45,7 +45,8 @@ const SignUp = () => {
 
     return (
         <View style={styles.container}>
-            <Text>Sign Up</Text>
+            <Text style = {styles.welcomeText}>Welcome to Kong Posh!</Text>
+            {/* <Text>Sign Up</Text> */}
             <View style = {styles.inputContainer}>
                 <TextInput
                     placeholder="Email"
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 50,
+        //paddingTop: 50,
     }, inputContainer: {
         margin: 30,
         width: '80%',
@@ -90,8 +91,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,
-        marginTop: 30,
-    }, 
+        marginTop: 20,
+        width: 250,
+    }, welcomeText: {
+        fontSize: 24,
+        alignItems: 'center',
+        paddingVertical: 20,
+    }
 });
 
 export default SignUp
