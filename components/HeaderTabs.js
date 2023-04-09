@@ -4,7 +4,7 @@ import {View, Text, TouchableOpacity} from "react-native";
 export default function HeaderTabs(){
     const[activeTab, setActiveTab] = useState("Non-Veg");
     return(
-        <View style = {{flexDirection: "row", alignSelf: "center"}}>
+        <View style = {{flexDirection: "row", alignSelf: "center", marginTop: 50}}>
             {/* Header BUtton */}
             <HeaderButton 
                 text = "Non-Veg" 
@@ -32,8 +32,8 @@ const HeaderButton = (props) => (
         <TouchableOpacity 
             style={{
                 backgroundColor: props.activeTab === props.text ? "black": "white",
-                paddingVertical: 6,
-                paddingHorizontal: 16,
+                paddingVertical: 10,
+                paddingHorizontal: 30,
                 borderRadius: 30,
             }}
             onPress = {() => props.setActiveTab(props.text)}
