@@ -29,10 +29,10 @@ export default function App() {
                   return <Entypo name="home" size={24} color={c} />
                 } else if (rn == "Cart") {
                   return <Entypo name="shopping-cart" size={24} color={c} />
-                // } else if (rn == "SignUp") {
-                //   return <FontAwesome name="arrow-circle-up" size={24} color={c} />
-                // } else if (rn == "SignIn") {
-                //   return <Entypo name="login" size={24} color={c} />
+                } else if (rn == "SignUp") {
+                  return <FontAwesome name="arrow-circle-up" size={24} color={c} />
+                } else if (rn == "SignIn") {
+                  return <Entypo name="login" size={24} color={c} />
                 } else if (rn == "Menu") {
                   return <FontAwesome name="apple" size={24} color={c} />
                 } else if (rn == "Item") {
@@ -47,8 +47,8 @@ export default function App() {
         >
          
           <Screen name="Home" component={Home}/>
-          {/* <Screen name="SignIn" component={SignIn}/>
-          <Screen name="SignUp" component={SignUp}/> */}
+          <Screen name="SignIn" component={SignIn}/>
+          <Screen name="SignUp" component={SignUp}/>
           <Screen name="Menu" component={Menu}/>
           <Screen name="Item" component={Item}/>
           <Screen name="Cart" component={Cart}/>
