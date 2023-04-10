@@ -2,16 +2,30 @@ import React from 'react';
 import { View, StyleSheet,ScrollView } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import HeaderTabs from '../components/HeaderTabs';
+import RestaurantCard from '../components/RestaurantCard';
 
 export default function Menu(){
     return(
-        <ScrollView Vertical>
-            <View style={styles.container}>
+      <View style={styles.container}>
                 <HeaderTabs style={styles.HeaderTabs}/>
                 <Searchbar style={styles.searchBar} placeholder="Search"/>
                 {/* Other content */}
+        <ScrollView Vertical>
+            <View style={styles.container}>
+              <RestaurantCard
+                   picture = 'require(../assets/google.png)'
+                   name = "Miheer"
+                   description = "Its good"
+               />
+               <RestaurantCard
+                   picture = 'require(../assets/google.png)'
+                   name = "Miheer"
+                   description = "Its good"
+               />
+               
             </View>
         </ScrollView>
+        </View>
         
     );
 }
@@ -21,6 +35,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     padding: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   searchBar: {
     marginTop: 20,

@@ -1,5 +1,6 @@
 import {React , useState} from 'react';
 import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import colors from '../config/colors';
 
 
 
@@ -30,10 +31,10 @@ const radius = 20;
 const styles = StyleSheet.create({
     cardContainer: {
         width: deviceWidth - 25,
-        backgroundColor: '#FD9163',
-        height: 300,
+        backgroundColor: 'white',
+        height: 290,
         borderRadius: 20,
-        marginHorizontal: 10,
+        //marginHorizontal: 10,
         justifyContent: 'center',
         shadowColor: '#000',
         shadowOffset: {
@@ -43,6 +44,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.75,
         shadowRadius: 5,
         elevation: 9,
+        marginVertical: 10,
+        marginHorizontal: -10,
+        justifyContent: 'center',
+        borderWidth: 3,
+        borderColor: colors.primary,
     },
     imageStyle: {
         height: 230,
@@ -52,12 +58,13 @@ const styles = StyleSheet.create({
         borderTopRightRadius: radius,
         borderTopRightRadius: radius,
         opacity: 0.9,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        backgroundColor: 'black',
     },
     titleStyle: {
         fontSize: 20,
         fontWeight: '800',
-        color: 'white',
+        color: colors.primary,
     },
     categoryStyle: {
         fontWeight: '200',
