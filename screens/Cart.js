@@ -22,8 +22,8 @@ const Cart = () => {
             <ScrollView>
                <RestaurantCard
                    picture = 'require(../assets/google.png)'
-                   name = "Miheer"
-                   description = "Its good"
+                   name = "Item Name"
+                   description = "Item Description"
                />
             </ScrollView>
         </View>
