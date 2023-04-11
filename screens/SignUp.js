@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect} from 'react'
 import { StyleSheet, View, Text, TextInput } from 'react-native'
 import Button from '../components/Button';
 import {auth} from '../firebase';
@@ -6,8 +6,6 @@ import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { useNavigation } from '@react-navigation/core';
 import Email from '../Email';
 import Password from '../Password';
-
-
 
 const SignUp = () => {
     
