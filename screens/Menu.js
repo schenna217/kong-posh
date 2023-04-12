@@ -14,12 +14,12 @@ export default function Menu(){
             <View style={styles.container}>
               <RestaurantCard
                    picture = 'require(../assets/google.png)'
-                   name = "Item Name"
+                   name = "Miheer's Treat"
                    description = "Item Description"
                />
                <RestaurantCard
                    picture = 'require(../assets/google.png)'
-                   name = "Item Name"
+                   name = "Miheer's Treat"
                    description = "Item Description"
                />
                
