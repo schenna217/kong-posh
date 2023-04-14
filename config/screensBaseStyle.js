@@ -1,8 +1,10 @@
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View} from 'react-native';
 
-
-const Styles = StyleSheet.create({
-    
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#A6A9BC',
+    paddingTop: Platform.OS === 'android' ? 25 : 0
+},
 });
-
-export default Styles;
