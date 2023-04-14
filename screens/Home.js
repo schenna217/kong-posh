@@ -14,6 +14,9 @@ export default function Home({navigation}) {
                 title = 'Menu'
                 onPress={() => navigation.navigate(Menu)}
               />
+              <Button
+                title = 'Sign Out'
+              />
         </View>
         <Categories/>
     </SafeAreaView>
@@ -22,12 +25,15 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
+    flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 15,
     paddingVertical: 40,
+    marginHorizontal: 5,
+    marginVertical: 5,
   },
   
 });

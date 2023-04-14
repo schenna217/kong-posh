@@ -2,11 +2,11 @@ import React from "react";
 import { TouchableHighlight, Text, StyleSheet} from 'react-native'
 
 
-function Button({title, onPress, }) {
+function Button({title, onPress,}) {
   return (
     <TouchableHighlight
       onPress={onPress}
-      style={[styles.button, {backgroundColor: "#FD8653"}]}>
+      style={[styles.button, {backgroundColor: "#FD8653"}, ]}>
       <Text style={styles.text}>{title}</Text>
       </TouchableHighlight>
   );
@@ -15,10 +15,9 @@ function Button({title, onPress, }) {
 const styles = StyleSheet.create({
   button: {
     height: 40,
-    width: 200,
     fontWeight: 'bold',
     margin: 10,
-    padding: 5,
+    paddingHorizontal: 10,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 2,
