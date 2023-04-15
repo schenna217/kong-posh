@@ -1,36 +1,93 @@
 import React from 'react';
-import { View, StyleSheet,ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, FlatList, Dimensions, Image, Text, TouchableOpacity } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import HeaderTabs from '../components/HeaderTabs';
-import RestaurantCard from '../components/RestaurantCard';
+import colors from '../config/colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
+const {width} = Dimensions.get("screen");
+const cardWidth = width/2 - 20;
+import Categories from '../components/Categories';
+import Food from '../components/Food';
 
 export default function Menu(){
-    return(
-      <View style={styles.container}>
-                <HeaderTabs style={styles.HeaderTabs}/>
-                <Searchbar style={styles.searchBar} placeholder="Search"/>
-                {/* Other content */}
-        <ScrollView Vertical>
-            <View style={styles.container}>
-              <RestaurantCard
-                   picture = 'require(../assets/google.png)'
-                   name = "Miheer's Treat"
-                   description = "Item Description"
-               />
-               <RestaurantCard
-                   picture = 'require(../assets/google.png)'
-                   name = "Miheer's Treat"
-                   description = "Item Description"
-               />
-               
-            </View>
-        </ScrollView>
-        </View>
-        
-    );
-}
+    const[selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
-const styles = StyleSheet.create({
+    const CategoryList = () => {
+      return (
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={style.categoryContainer}>
+        {Categories.map((category, index)=>(
+            <TouchableOpacity key={index} activeOpacity={0.8} onPress = {() => setSelectedCategoryIndex(index)}>
+                <View 
+                  style={{
+                    backgroundColor:
+                      selectedCategoryIndex==index
+                      ? 'black': 'white',
+                   ...style.categoryButton
+                   }}>
+                   <View style = {style.categoryBtnImageIcon}>
+                      <Image 
+                        source = {category.image}
+                        style = {{height: 15, width: 15, resizeMode: 'cover'}}
+                      />
+                    </View>
+                    <Text style={{fontSize: 15, fontWeight: 'bold', marginLeft: 10, color: selectedCategoryIndex == index ? 'white': 'black'}}>
+                     {category.text}
+                    </Text>
+              </View>
+            </TouchableOpacity>
+            ))}
+      </ScrollView>
+      );
+    };
+    const Card = ({food}) => {
+      return (
+        <View style ={style.card}>
+          <View style = {{alignItems: 'center', top : -40}}>
+            <Image source = {food.image} style = {{height: 120, width: 120}}/>
+          </View>
+          <View style = {{marginHorizontal: 20}}>
+            <Text style={{fontSize: 18, fontWeight: 'bold', alignItems: 'center'}}>
+                {food.name}
+            </Text>
+          </View>
+        </View>
+      );
+    };
+    return(
+      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        <View style = {style.header}>
+          <View>
+            <View style = {{flexDirection: 'row'}}>
+              <Text style={{fontSize: 28}}>
+                Hello,
+              </Text>
+              <Text style={{fontSize: 28, fontWeight: 'bold', marginLeft: 10}}>
+                User
+              </Text>
+            </View>
+            <Text style={{marginTop: 5, fontSize: 22, color: 'red'}}>
+              What would you like to eat?
+            </Text>
+          </View>
+        </View>
+        <View style = {{marginTop: 40, flexDirection: 'row', paddingHorizontal: 20}}>
+          <Searchbar style={style.searchBar} placeholder="Search"/>
+        </View>
+        <View><CategoryList/></View>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          numColumns = {2}
+          data={Food}
+          renderItem={({item}) => <Card food = {item}/>}
+        />
+       </SafeAreaView>
+    );
+  };
+
+const style = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
@@ -42,7 +99,47 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#f2f2f2',
   },
+  header:{
+    marginTop: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+  },
   HeaderTabs: {
     marginTop: 40,
   },
+  card:{
+    height: 220,
+    width: cardWidth,
+    marginHorizontal: 10,
+    marginBottom: 20,
+    marginTop: 50,
+    borderRadius: 15,
+    elevation: 13,
+    backgroundColor: 'white',
+  },
+  categoryContainer: {
+    paddingVertical: 30,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  categoryButton: {
+    height: 45, 
+    width: 120,
+    marginRight: 7,
+    borderRadius: 25,
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  categoryBtnImageIcon: {
+      height: 35,
+      width: 35,
+      borderRadius: 30,
+      backgroundColor: 'white',
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
+ 
+
+
 });
