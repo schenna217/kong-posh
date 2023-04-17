@@ -4,26 +4,24 @@ import Profile from '../components/ProfileTextAvatar'
 import Menu from "./Menu";
 import Button from "../components/Button";
 import Categories from "../components/Categories";
-import { useNavigation } from "@react-navigation/core";
-import {auth} from '../firebase';
-import { signOut } from 'firebase/auth';
+// import {auth} from '../firebase';
+// import { signOut } from 'firebase/auth';
 
 
 
-const Home = () => {
-  const navigation = useNavigation()
-  const handleSignOut = () => {
-    console.log("Signing Out")
-    try {
-      signOut(auth)
-        .then(() => {
-          navigation.navigate("SignIn")
-        })
-    }
-    catch(error) {
-      console.log("SignOut didn't work: " + error.message);
-    }
-  }
+export default function Home({navigation}) {
+  // const handleSignOut = () => {
+  //   console.log("Signing Out")
+  //   try {
+  //     signOut(auth)
+  //       .then(() => {
+  //         navigation.navigate("SignIn")
+  //       })
+  //   }
+  //   catch(error) {
+  //     console.log("SignOut didn't work: " + error.message);
+  //   }
+  // }
   return (
     <SafeAreaView>
         <View style={styles.container}>
@@ -33,10 +31,10 @@ const Home = () => {
               />
               <Button
                 title = "Sign Out"
-                onPress={handleSignOut}
+                //onPress={handleSignOut}
               />
         </View>
-        <Categories/>
+        {/* <Categories/> */}
     </SafeAreaView>
   );
 }
@@ -56,4 +54,3 @@ const styles = StyleSheet.create({
   
 });
 
-export default Home
