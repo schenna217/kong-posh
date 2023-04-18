@@ -7,11 +7,13 @@ import { useNavigation } from '@react-navigation/core';
 import Email from '../Email';
 import Password from '../Password';
 
-const SignUp = () => {
+const SignUp = (firstName, lastName) => {
     
     const {email, setEmail} = Email()
     const {password, setPassword} = Password()
     const navigation = useNavigation()
+    const {firstName, setFirstName} = firstName
+    const {lastName, setLastName} = lastName
 
     const goToSignIn = () => {
         navigation.navigate("SignIn")
@@ -46,6 +48,17 @@ const SignUp = () => {
             <Text style = {styles.welcomeText}>Welcome to Kong Posh!</Text>
             {/* <Text>Sign Up</Text> */}
             <View style = {styles.inputContainer}>
+                {/* useReactState */}
+                <TextInput
+                    placeholder='First Name'
+                    value = {firstName}
+                    onChangeText={firstName}
+                />
+                <TextInput
+                    placeholder='Last Name'
+                    value = {lastName}
+                    onChangeText={lastName}
+                />
                 <TextInput
                     placeholder="Email"
                     value={email}
@@ -99,4 +112,3 @@ const styles = StyleSheet.create({
 });
 
 export default SignUp
-
