@@ -2,8 +2,7 @@ import React from 'react'
 import { Image, View, Text, StyleSheet, ScrollView } from 'react-native'
 import Button from '../components/Button'
 import Item from './Item'
-// import RestaurantCard, { setDescription } from '../components/RestaurantCard'
-
+import RestaurantCard, { setDescription } from '../components/RestaurantCard'
 
 const Cart = () => {
 
@@ -21,16 +20,7 @@ const Cart = () => {
                 $$$$$$$
             </Text>
             <ScrollView>
-               {/* <RestaurantCard
-                   img = '../assets/icon.png'
-                   title = "Item Name"
-                   description = "Item Description"
-               />
-                <RestaurantCard
-                   img = "../assets/images/bg1.png"
-                   title = "Item Nome"
-                   description = "Item Description"
-               /> */}
+            
             </ScrollView>
         </View>
     )

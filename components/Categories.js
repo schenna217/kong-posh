@@ -15,7 +15,7 @@ const Categories = [
   {
     id: 3,
     image: require('../assets/images/bread.png'),
-    text: 'Bakery',
+    text: 'Snacks',
   },
   {
     id: 4,

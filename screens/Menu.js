@@ -24,7 +24,7 @@ export default function Menu(){
                   style={{
                     backgroundColor:
                       selectedCategoryIndex==index
-                      ? 'black': 'white',
+                      ? colors.primary: 'white',
                    ...style.categoryButton
                    }}>
                    <View style = {style.categoryBtnImageIcon}>
@@ -49,7 +49,7 @@ export default function Menu(){
             <Image source = {food.image} style = {{height: 120, width: 120}}/>
           </View>
           <View style = {{marginHorizontal: 20}}>
-            <Text style={{fontSize: 18, fontWeight: 'bold', alignItems: 'center'}}>
+            <Text style={{fontSize: 18, fontWeight: 'bold', alignItems: 'center', justifyContent: 'center'}}>
                 {food.name}
             </Text>
           </View>
@@ -68,7 +68,7 @@ export default function Menu(){
                 User
               </Text>
             </View>
-            <Text style={{marginTop: 5, fontSize: 22, color: 'red'}}>
+            <Text style={{marginTop: 5, fontSize: 22, color: colors.primary}}>
               What would you like to eat?
             </Text>
           </View>
@@ -90,7 +90,7 @@ export default function Menu(){
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.primary,
     padding: 10,
     alignItems: 'center',
     justifyContent: 'space-between'
@@ -112,6 +112,7 @@ const style = StyleSheet.create({
     height: 220,
     width: cardWidth,
     marginHorizontal: 10,
+    backgroundColor: colors.primary,
     marginBottom: 20,
     marginTop: 50,
     borderRadius: 15,
@@ -134,6 +135,7 @@ const style = StyleSheet.create({
   categoryBtnImageIcon: {
       height: 35,
       width: 35,
+      marginLeft: 5,
       borderRadius: 30,
       backgroundColor: 'white',
       justifyContent: 'center',
