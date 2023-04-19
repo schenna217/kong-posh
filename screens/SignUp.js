@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/core';
 import Email from '../Email';
 import Password from '../Password';
 
-const SignUp = (firstName, lastName) => {
+const SignUp = () => {
     
     const {email, setEmail} = Email()
     const {password, setPassword} = Password()
