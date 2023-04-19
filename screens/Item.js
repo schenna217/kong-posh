@@ -3,7 +3,9 @@ import { View, Image, ImageBackground, Text, StyleSheet} from 'react-native'
 import Button from '../components/Button';
 
 
-const Item = () => {
+
+const Item = ({route}) => {
+    const dish = route.params;
     return (
         <View style={styles.container}>
             <Image>
