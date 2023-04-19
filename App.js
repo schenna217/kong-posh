@@ -47,8 +47,8 @@ export default function App() {
         >
          
           <Screen name="Home" component={Home}/>
-          {/* <Screen name="SignIn" component={SignIn}/>
-          <Screen name="SignUp" component={SignUp}/> */}
+          <Screen name="SignIn" component={SignIn} options={{tabBarStyle: {display: 'none'}}}/>
+          <Screen name="SignUp" component={SignUp} options={{tabBarStyle: {display: 'none'}}}/>
           <Screen name="Menu" component={Menu}/>
           <Screen name="Item" component={Item}/>
           <Screen name="Cart" component={Cart}/>

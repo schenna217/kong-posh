@@ -12,8 +12,8 @@ const SignUp = () => {
     const {email, setEmail} = Email()
     const {password, setPassword} = Password()
     const navigation = useNavigation()
-    const {firstName, setFirstName} = firstName
-    const {lastName, setLastName} = lastName
+    // const {firstName, setFirstName} = firstName
+    // const {lastName, setLastName} = lastName
 
     const goToSignIn = () => {
         navigation.navigate("SignIn")
@@ -49,7 +49,7 @@ const SignUp = () => {
             {/* <Text>Sign Up</Text> */}
             <View style = {styles.inputContainer}>
                 {/* useReactState */}
-                <TextInput
+                {/* <TextInput
                     placeholder='First Name'
                     value = {firstName}
                     onChangeText={firstName}
@@ -58,7 +58,7 @@ const SignUp = () => {
                     placeholder='Last Name'
                     value = {lastName}
                     onChangeText={lastName}
-                />
+                /> */}
                 <TextInput
                     placeholder="Email"
                     value={email}
