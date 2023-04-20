@@ -20,9 +20,9 @@ const Item = ({route}) => {
             <Text>
                 Price
             </Text>
-            <Button>
-                Add to Cart
-            </Button>
+            <Button
+                title="Add to Cart"
+            />
         </View>
     )
 }
