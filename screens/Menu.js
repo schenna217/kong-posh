@@ -9,7 +9,7 @@ const cardWidth = width/2 - 20;
 import Categories from '../components/Categories';
 import Food from '../components/Food';
 
-export default function Menu(){
+export default function Menu({navigation}){
     const[selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
 
     const CategoryList = () => {
@@ -44,16 +44,23 @@ export default function Menu(){
     };
     const Card = ({food}) => {
       return (
+       <TouchableOpacity onPress={() => navigation.navigate('Item')}>
         <View style ={style.card}>
-          <View style = {{alignItems: 'center', top : -40}}>
+          <View style = {{alignItems: 'center', top : -10}}>
             <Image source = {food.image} style = {{height: 120, width: 120}}/>
           </View>
-          <View style = {{marginHorizontal: 20}}>
-            <Text style={{fontSize: 18, fontWeight: 'bold', alignItems: 'center', justifyContent: 'center'}}>
+          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+            <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
                 {food.name}
             </Text>
           </View>
+          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+            <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
+                {food.price}
+            </Text>
+          </View>
         </View>
+       </TouchableOpacity>
       );
     };
     return(
@@ -79,7 +86,7 @@ export default function Menu(){
         <View><CategoryList/></View>
         <FlatList
           showsVerticalScrollIndicator={false}
-          numColumns = {2}
+          numColumns = {3}
           data={Food}
           renderItem={({item}) => <Card food = {item}/>}
         />

@@ -15,7 +15,7 @@ const Food =[
 },
 {
     id: '3',
-    name: 'Chicken Biryani',
+    name: 'Chicken',
     description: 'Tastes Like chicken biryani',
     price: '$27.50',
     image: require('../assets/images/fast-food.png')
