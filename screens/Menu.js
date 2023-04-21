@@ -47,7 +47,8 @@ export default function Menu({navigation}){
        <TouchableOpacity onPress={() => navigation.navigate('Item', {
          source: food.image,
          name: food.name,
-         price: food.price
+         price: food.price,
+         description: food.description
        })
        }>
         <View style ={style.card}>

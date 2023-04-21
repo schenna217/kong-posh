@@ -5,19 +5,17 @@ import Button from '../components/Button';
 
 
 const Item = ({route}) => {
-    const {source, name, price} = route.params;
+    const {source, name, price, description} = route.params;
     return (
         <View style={styles.container}>
             <Image
-                //source={source}
-            >
-                
-            </Image>
+                source={source}
+            />
             <Text>
                 {name}
             </Text>
             <Text>
-                Item description
+                {description}
             </Text>
             <Text>
                 {price}
