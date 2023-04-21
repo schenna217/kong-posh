@@ -8,8 +8,10 @@ const Item = ({route}) => {
     const {source, name, price, description} = route.params;
     return (
         <View style={styles.container}>
+            <Button/>
             <Image
                 source={source}
+                style={styles.picture}
             />
             <Text>
                 {name}
@@ -30,8 +32,9 @@ const Item = ({route}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center'
+    }, picture: {
+        height: 150
     }
 })
 
