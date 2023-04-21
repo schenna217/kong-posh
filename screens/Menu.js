@@ -44,7 +44,12 @@ export default function Menu({navigation}){
     };
     const Card = ({food}) => {
       return (
-       <TouchableOpacity onPress={() => navigation.navigate('Item')}>
+       <TouchableOpacity onPress={() => navigation.navigate('Item', {
+         source: food.image,
+         name: food.name,
+         price: food.price
+       })
+       }>
         <View style ={style.card}>
           <View style = {{alignItems: 'center', top : -10}}>
             <Image source = {food.image} style = {{height: 120, width: 120}}/>

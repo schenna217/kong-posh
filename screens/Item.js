@@ -5,20 +5,22 @@ import Button from '../components/Button';
 
 
 const Item = ({route}) => {
-    const dish = route.params;
+    const {source, name, price} = route.params;
     return (
         <View style={styles.container}>
-            <Image>
-
+            <Image
+                //source={source}
+            >
+                
             </Image>
             <Text>
-                Item Name
+                {name}
             </Text>
             <Text>
                 Item description
             </Text>
             <Text>
-                Price
+                {price}
             </Text>
             <Button
                 title="Add to Cart"
