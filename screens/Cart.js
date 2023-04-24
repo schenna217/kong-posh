@@ -6,7 +6,26 @@ import RestaurantCard, { setDescription } from '../components/RestaurantCard'
 
 const Cart = () => {
 
-
+    const Card = ({food}) => {
+      return (
+       
+        <View style ={style.card}>
+          <View style = {{alignItems: 'center', top : -10}}>
+            <Image source = {food.image} style = {{height: 120, width: 120}}/>
+          </View>
+          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+            <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
+                {food.name}
+            </Text>
+          </View>
+          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+            <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
+                {food.price}
+            </Text>
+          </View>
+        </View>
+      );
+    };
 
     return (
         <View style={styles.container}>

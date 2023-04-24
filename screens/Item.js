@@ -4,12 +4,15 @@ import Button from '../components/Button';
 
 
 
-const Item = ({route}) => {
+const Item = ({route, navigation}) => {
     const {source, name, price, description} = route.params;
     return (
         <View style={styles.container}>
             <View style={styles.top}>
-                <Button/>
+                <Button
+                    title= "<-"
+                    onPress={() => navigation.navigate("Menu")}
+                />
             </View>
             <View style={styles.bottom}>
                 <Image
