@@ -4,23 +4,23 @@ import Button from '../components/Button'
 import Item from './Item'
 import RestaurantCard, { setDescription } from '../components/RestaurantCard'
 
-const Cart = () => {
+const Cart = ({navigation}) => {
 
-    const Card = ({food}) => {
+    const Card = ({}) => {
+      const {source, name, price, description} = route.params;
       return (
-       
         <View style ={style.card}>
           <View style = {{alignItems: 'center', top : -10}}>
-            <Image source = {food.image} style = {{height: 120, width: 120}}/>
+            <Image source = {source} style = {{height: 120, width: 120}}/>
           </View>
           <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
             <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
-                {food.name}
+                {name}
             </Text>
           </View>
           <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
             <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
-                {food.price}
+                {price}
             </Text>
           </View>
         </View>
@@ -32,11 +32,15 @@ const Cart = () => {
             <Text style={styles.headerText}>
                 Welcome To Cart!
             </Text>
+            <Button
+              title='Anything else?'
+              onPress={() => {navigation.navigate("Menu")}}
+            />
             <Text style={styles.text}>
                 Total amount:
             </Text>
             <Text style={styles.text2}>
-                $$$$$$$
+                $0.00
             </Text>
             <ScrollView>
             

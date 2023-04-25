@@ -32,6 +32,12 @@ const Item = ({route, navigation}) => {
                 </View>
                 <Button
                     title="Add to Cart"
+                    onPress={() => navigation.navigate("Cart", {
+                        source: source,
+                        name: name,
+                        price: price,
+                        description: description
+                    })}
                 />
             </View>
         </View>
