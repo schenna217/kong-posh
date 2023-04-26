@@ -23,12 +23,12 @@ const Item = ({route, navigation}) => {
                     {name}
                 </Text>
                 <View style={styles.details}>
-                <Text>
-                    {description}
-                </Text>
-                <Text>
-                    {price}
-                </Text>
+                    <Text style={styles.descriptionText}>
+                        {description}
+                    </Text>
+                    <Text>
+                        {price}
+                    </Text>
                 </View>
                 <Button
                     title="Add to Cart"
@@ -62,7 +62,9 @@ const styles = StyleSheet.create({
         fontSize: 35
     }, details: {
         alignItems: 'center',
-        marginBottom: 110
+        marginBottom: 50
+    }, descriptionText: {
+        fontSize: 12
     }
 })
 
