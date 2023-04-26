@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Image, ImageBackground, Text, StyleSheet} from 'react-native'
 import Button from '../components/Button';
 
 
 
 const Item = ({route, navigation}) => {
+
+    const cartArray = [{}];
+    const [idNum, setIdNum] = useState(1);
     const {source, name, price, description} = route.params;
+    const addToCart = () => {
+        cartArray.push({source, name, price}),
+        setIdNum(cartArray.length + 1)
+    }
     return (
         <View style={styles.container}>
             <View style={styles.top}>
@@ -37,7 +44,7 @@ const Item = ({route, navigation}) => {
                         name: name,
                         price: price,
                         description: description
-                    })}
+                    }, addToCart)}
                 />
             </View>
         </View>
