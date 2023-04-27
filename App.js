@@ -10,53 +10,64 @@ import Cart from './screens/Cart'
 import Item from './screens/Item'
 import Menu from './screens/Menu';
 import colors from './config/colors';
+import InitialCheck from './navigation/InitialCheck';
+import { ThemeProvider } from 'react-native-paper';
+import firebase from './firebase';
+import LoggedInStack from './navigation/LoggedInStack';
+import SignUporInStack from './navigation/SignUporInStack';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
 export default function App() {
   return(
-    <>
+    <ThemeProvider>
+      {/* <InitialCheck /> */}
+      {/* <LoggedInStack /> */}
+      <SignUporInStack />
+    </ThemeProvider>
     
-      <NavigationContainer>
-        <Navigator 
-          screenOptions={
-            ({ route }) => ({
-              tabBarIcon: ({ focused, }) => {
-                let c = focused ? colors.primary: "black";
-                let rn = route.name
+    // <>
+    
+    //   <NavigationContainer>
+    //     <Navigator 
+    //       screenOptions={
+    //         ({ route }) => ({
+    //           tabBarIcon: ({ focused, }) => {
+    //             let c = focused ? colors.primary: "black";
+    //             let rn = route.name
   
-                if (rn == "Home") {
-                  return <Entypo name="home" size={24} color={c} />
-                } else if (rn == "Cart") {
-                  return <Entypo name="shopping-cart" size={24} color={c} />
-                // } else if (rn == "SignUp") {
-                //   return <FontAwesome name="arrow-circle-up" size={24} color={c} />
-                // } else if (rn == "SignIn") {
-                //   return <Entypo name="login" size={24} color={c} />
-                } else if (rn == "Menu") {
-                  return <FontAwesome name="apple" size={24} color={c} />
-                } else if (rn == "Item") {
-                  return <MaterialCommunityIcons name="food-drumstick" size={24} color={c} />
-                }
-              },
-              tabBarShowLabel: false,
-              headerShown: false,
-            })
-          }
-          initialRouteName={"SignUp"}
-        >
+    //             if (rn == "Home") {
+    //               return <Entypo name="home" size={24} color={c} />
+    //             } else if (rn == "Cart") {
+    //               return <Entypo name="shopping-cart" size={24} color={c} />
+    //             // } else if (rn == "SignUp") {
+    //             //   return <FontAwesome name="arrow-circle-up" size={24} color={c} />
+    //             // } else if (rn == "SignIn") {
+    //             //   return <Entypo name="login" size={24} color={c} />
+    //             } else if (rn == "Menu") {
+    //               return <FontAwesome name="apple" size={24} color={c} />
+    //             } else if (rn == "Item") {
+    //               return <MaterialCommunityIcons name="food-drumstick" size={24} color={c} />
+    //             }
+    //           },
+    //           tabBarShowLabel: false,
+    //           headerShown: false,
+    //         })
+    //       }
+    //       initialRouteName={"SignUp"}
+    //     >
          
-          <Screen name="Home" component={Home}/>
-          {/* <Screen name="SignIn" component={SignIn} options={{tabBarStyle: {display: 'none'}}}/>
-          <Screen name="SignUp" component={SignUp} options={{tabBarStyle: {display: 'none'}}}/> */}
-          <Screen name="Menu" component={Menu}/>
-          <Screen name="Item" component={Item}/>
-          <Screen name="Cart" component={Cart}/>
+    //       <Screen name="Home" component={Home}/>
+    //       {/* <Screen name="SignIn" component={SignIn} options={{tabBarStyle: {display: 'none'}}}/>
+    //       <Screen name="SignUp" component={SignUp} options={{tabBarStyle: {display: 'none'}}}/> */}
+    //       <Screen name="Menu" component={Menu}/>
+    //       <Screen name="Item" component={Item}/>
+    //       <Screen name="Cart" component={Cart}/>
 
-        </Navigator>
-      </NavigationContainer>
-      <StatusBar style="auto"/>
-    </>
+    //     </Navigator>
+    //   </NavigationContainer>
+    //   <StatusBar style="auto"/>
+    // </>
   );
 }
 

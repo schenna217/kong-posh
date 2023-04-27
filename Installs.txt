@@ -11,3 +11,8 @@ React Native Paper Installs (https://callstack.github.io/react-native-paper/docs
 Firebase Installs
     npm install @react-navigation/native
     npx expo install firebase
+
+    npm install @react-navigation/stack
+
+    // need this?
+    npx expo install react-native-gesture-handler
