@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Image, ImageBackground, Text, StyleSheet} from 'react-native'
+import { View, Image, ImageBackground, Text, StyleSheet, ScrollView} from 'react-native'
 import Button from '../components/Button';
 
 
@@ -14,7 +14,7 @@ const Item = ({route, navigation}) => {
         setIdNum(cartArray.length + 1)
     }
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.top}>
                 <Button
                     title= "<-"
@@ -47,7 +47,7 @@ const Item = ({route, navigation}) => {
                     }, addToCart)}
                 />
             </View>
-        </View>
+        </ScrollView>
     )
 }
 
