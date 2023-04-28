@@ -21,13 +21,13 @@ const loggedInStack = createStackNavigator();
 
 export default function UserStack() {
     return(
-        <Tab.Navigator>
-          {/* screenOptions={
+        <Tab.Navigator
+          screenOptions={
             ({ route }) => ({
               tabBarIcon: ({ focused, }) => {
                 let c = focused ? colors.primary: "black";
                 let rn = route.name
-  
+
                 if (rn == "Home") {
                   return <Entypo name="home" size={24} color={c} />
                 } else if (rn == "Cart") {
@@ -41,11 +41,16 @@ export default function UserStack() {
               tabBarShowLabel: false,
               headerShown: false,
             })
-          } */}
+          }
+        >
+
 
           <Tab.Screen name="Home" component={Home} />
-          <Tab.Screen name="Menu" component={Menu} />
+          <Tab.Screen name="Menu" component={Menu}  />
           <Tab.Screen name="Cart" component={Cart} />
+          <Tab.Screen name="Item" component={Item} options={{
+            tabBarButton: () => undefined
+          }}/>
         </Tab.Navigator>
       );
 }
