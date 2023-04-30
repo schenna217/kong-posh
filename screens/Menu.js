@@ -8,10 +8,23 @@ const {width} = Dimensions.get("screen");
 const cardWidth = width/2 - 20;
 import Categories from '../components/Categories';
 import Food from '../components/Food';
+import Meals from '../config/Meals';
+import Drinks from '../config/Drinks';
+import Snacks from '../config/Snacks';
+import Desserts from '../config/Desserts';
 
 export default function Menu({navigation}){
     const[selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
-
+    const[option, setOptions] = React.useState(Food);
+    if(selectedCategoryIndex = 1){
+      setOptions(Drinks)
+    } else if(selectedCategoryIndex = 2){
+      setOptions(Meals)
+    } else if(selectedCategoryIndex = 3){
+      setOptions(Snacks)
+    } else if(selectedCategoryIndex = 4){
+      setOptions(Desserts)
+    }
     const CategoryList = () => {
       return (
       <ScrollView
