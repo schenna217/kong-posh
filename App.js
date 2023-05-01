@@ -16,16 +16,24 @@ import firebase from './firebase';
 import LoggedInStack from './navigation/LoggedInStack';
 import SignUporInStack from './navigation/SignUporInStack';
 
+import { StripeProvider } from '@stripe/stripe-react-native';
+
 const {Navigator, Screen} = createBottomTabNavigator();
 
 export default function App() {
   return(
+    <StripeProvider
+      publishableKey="pk_test_51N2gBiG6PLk5ZJDBQRLQL3gGJ4GRqDpWYITQIJWB4STUkbJk7pgp8esLV34rkJyi1jiH1IPvKPMJiyriQcR67nFt00ht2GH7nH"
+
+      //urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
+      //merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
+    >
     <ThemeProvider>
       {/* <InitialCheck /> */}
       {/* <LoggedInStack /> */}
       <SignUporInStack />
     </ThemeProvider>
-    
+    </StripeProvider>
     // <>
     
     //   <NavigationContainer>
@@ -54,6 +62,7 @@ export default function App() {
     //           headerShown: false,
     //         })
     //       }
+
     //       initialRouteName={"SignUp"}
     //     >
          
