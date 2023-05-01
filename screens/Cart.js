@@ -4,6 +4,68 @@ import Button from '../components/Button'
 import Item from './Item'
 import RestaurantCard, { setDescription } from '../components/RestaurantCard'
 
+// Stripe Code for displaying Payment Element and collecting payment details
+const { initPaymentSheet, presentPaymentSheet } = useStripe();
+  const [loading, setLoading] = useState(false);
+
+  const fetchPaymentSheetParams = async () => {
+    const response = await fetch(`${API_URL}/payment-sheet`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const { paymentIntent, ephemeralKey, customer} = await response.json();
+
+    return {
+      paymentIntent,
+      ephemeralKey,
+      customer,
+    };
+  };
+
+  const initializePaymentSheet = async () => {
+    const {
+      paymentIntent,
+      ephemeralKey,
+      customer,
+      publishableKey,
+    } = await fetchPaymentSheetParams();
+
+    const { error } = await initPaymentSheet({
+      merchantDisplayName: "Example, Inc.",
+      customerId: customer,
+      customerEphemeralKeySecret: ephemeralKey,
+      paymentIntentClientSecret: paymentIntent,
+      // Set `allowsDelayedPaymentMethods` to true if your business can handle payment
+      //methods that complete payment after a delay, like SEPA Debit and Sofort.
+      allowsDelayedPaymentMethods: true,
+      defaultBillingDetails: {
+        name: 'Jane Doe',
+      }
+    });
+    if (!error) {
+      setLoading(true);
+    }
+  };
+
+  const openPaymentSheet = async () => {
+    const { error } = await presentPaymentSheet();
+
+    if (error) {
+      Alert.alert(`Error code: ${error.code}`, error.message);
+    } else {
+      // Add Code here for a confirmation screen???
+      Alert.alert('Success', 'Your order is confirmed!');
+    }
+  };
+
+  useEffect(() => {
+    initializePaymentSheet();
+  }, []);
+
+
+// Other code for card styles and view
 const Cart = ({navigation}) => {
 
     const Card = ({}) => {
@@ -45,6 +107,10 @@ const Cart = ({navigation}) => {
             <ScrollView>
             
             </ScrollView>
+            <Button
+              title='Checkout'
+              onPress={openPaymentSheet}
+            />
         </View>
     )
 }

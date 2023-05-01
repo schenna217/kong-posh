@@ -16,3 +16,9 @@ Firebase Installs
 
     // need this?
     npx expo install react-native-gesture-handler
+
+    // Stripe Install Statements
+    npm install stripe --save
+    npm install @stripe/stripe-react-native
+    // ???
+    npx expo install @stripe/stripe-react-native@0.23.3
