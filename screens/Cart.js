@@ -33,7 +33,7 @@ const { initPaymentSheet, presentPaymentSheet } = useStripe();
     } = await fetchPaymentSheetParams();
 
     const { error } = await initPaymentSheet({
-      merchantDisplayName: "Example, Inc.",
+      merchantDisplayName: 'Kong Posh',
       customerId: customer,
       customerEphemeralKeySecret: ephemeralKey,
       paymentIntentClientSecret: paymentIntent,
