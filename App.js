@@ -20,6 +20,7 @@ const {Navigator, Screen} = createBottomTabNavigator();
 
 export default function App() {
   return(
+    
     <ThemeProvider>
       {/* <InitialCheck /> */}
       {/* <LoggedInStack /> */}
@@ -68,8 +69,11 @@ export default function App() {
     //   </NavigationContainer>
     //   <StatusBar style="auto"/>
     // </>
+    
   );
+  
 }
+
 
 
 const styles = StyleSheet.create({
