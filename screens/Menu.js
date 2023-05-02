@@ -15,15 +15,17 @@ import Desserts from '../config/Desserts';
 
 export default function Menu({navigation}){
     const[selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
-    const[option, setOptions] = React.useState(Food);
-    if(selectedCategoryIndex = 1){
-      setOptions(Drinks)
-    } else if(selectedCategoryIndex = 2){
-      setOptions(Meals)
-    } else if(selectedCategoryIndex = 3){
-      setOptions(Snacks)
-    } else if(selectedCategoryIndex = 4){
-      setOptions(Desserts)
+    const[options, setOptions] = React.useState(Food);
+    const changeList = () => {
+      if(selectedCategoryIndex === 1){
+        setOptions(Drinks)
+      } else if(selectedCategoryIndex === 2){
+        setOptions(Meals)
+      } else if(selectedCategoryIndex === 3){
+        setOptions(Snacks)
+      } else if(selectedCategoryIndex === 4){
+        setOptions(Desserts)
+      }
     }
     const CategoryList = () => {
       return (
@@ -32,7 +34,7 @@ export default function Menu({navigation}){
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={style.categoryContainer}>
         {Categories.map((category, index)=>(
-            <TouchableOpacity key={index} activeOpacity={0.8} onPress = {() => setSelectedCategoryIndex(index)}>
+            <TouchableOpacity key={index} activeOpacity={0.8} onPress = {() => {setSelectedCategoryIndex(category.id); changeList}}>
                 <View 
                   style={{
                     backgroundColor:
@@ -105,8 +107,8 @@ export default function Menu({navigation}){
         <View><CategoryList/></View>
         <FlatList
           showsVerticalScrollIndicator={false}
-          numColumns = {3}
-          data={Food}
+          numColumns = {2}
+          data={options}
           renderItem={({item}) => <Card food = {item}/>}
         />
        </SafeAreaView>

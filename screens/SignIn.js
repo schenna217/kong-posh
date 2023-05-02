@@ -24,7 +24,7 @@ const SignIn = () => {
     }, [])
 
     const signIn = () => {
-        console.log("Signing Up");
+        console.log("Signing In");
         try {
             signInWithEmailAndPassword(auth, email, password)
                 .then(userCredientals => {
