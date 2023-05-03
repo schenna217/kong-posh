@@ -5,25 +5,28 @@ import Item from './Item'
 import RestaurantCard, { setDescription } from '../components/RestaurantCard'
 
 // Stripe Code for displaying Payment Element and collecting payment details
-const { initPaymentSheet, presentPaymentSheet } = useStripe();
-  const [loading, setLoading] = useState(false);
 
-  const fetchPaymentSheetParams = async () => {
-    const response = await fetch(`${API_URL}/payment-sheet`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const { paymentIntent, ephemeralKey, customer} = await response.json();
+// KEEP THIS
+const { initPaymentSheet, presentPaymentSheet, confirmPaymentSheetPayment, } = useStripe();
+  // const [loading, setLoading] = useState(false);
 
-    return {
-      paymentIntent,
-      ephemeralKey,
-      customer,
-    };
-  };
+  // const fetchPaymentSheetParams = async () => {
+  //   const response = await fetch(`${API_URL}/payment-sheet`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //   const { paymentIntent, ephemeralKey, customer} = await response.json();
 
+  //   return {
+  //     paymentIntent,
+  //     ephemeralKey,
+  //     customer,
+  //   };
+  // };
+
+  // Need this?
   const initializePaymentSheet = async () => {
     const {
       paymentIntent,
@@ -32,25 +35,27 @@ const { initPaymentSheet, presentPaymentSheet } = useStripe();
       publishableKey,
     } = await fetchPaymentSheetParams();
 
-    const { error } = await initPaymentSheet({
+    const { error, paymentOption } = await initPaymentSheet({
       merchantDisplayName: 'Kong Posh',
       customerId: customer,
       customerEphemeralKeySecret: ephemeralKey,
       paymentIntentClientSecret: paymentIntent,
+      customFlow: true,
       // Set `allowsDelayedPaymentMethods` to true if your business can handle payment
       //methods that complete payment after a delay, like SEPA Debit and Sofort.
-      allowsDelayedPaymentMethods: true,
-      defaultBillingDetails: {
-        name: 'Jane Doe',
-      }
+      //allowsDelayedPaymentMethods: true,
+      // defaultBillingDetails: {
+      //   name: 'Jane Doe',
+      // }
     });
     if (!error) {
       setLoading(true);
     }
   };
 
+  // KEEP THIS FOR PAYMENT W/OUT SERVER
   const openPaymentSheet = async () => {
-    const { error } = await presentPaymentSheet();
+    const { error, paymentOption, } = await presentPaymentSheet();
 
     if (error) {
       Alert.alert(`Error code: ${error.code}`, error.message);
@@ -63,6 +68,17 @@ const { initPaymentSheet, presentPaymentSheet } = useStripe();
   useEffect(() => {
     initializePaymentSheet();
   }, []);
+
+  // KEEP THIS FOR PAYMENT W/OUT SERVER
+  // const { error } = await confirmPaymentSheetPayment();
+  //   if (error) {
+  //     Alert.alert(`Error code: ${error.code}`, error.message);
+  //   } else {
+  //     Alert.alert(
+  //       'Success',
+  //       'Your order is confirmed!'
+  //     );
+  //   }
 
 
 // Other code for card styles and view
