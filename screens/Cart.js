@@ -1,11 +1,93 @@
-import React from 'react'
-import { Image, View, Text, StyleSheet, ScrollView } from 'react-native'
+import React, {useState, useEffect} from 'react'
+import { Image, View, Text, StyleSheet, ScrollView, } from 'react-native'
 import Button from '../components/Button'
 import Item from './Item'
 import RestaurantCard, { setDescription } from '../components/RestaurantCard'
+import { useStripe } from '@stripe/stripe-react-native'
 
 // Stripe Code for displaying Payment Element and collecting payment details
 
+// // KEEP THIS
+// const { initPaymentSheet, presentPaymentSheet, confirmPaymentSheetPayment, } = useStripe();
+//   // const [loading, setLoading] = useState(false);
+
+//   // const fetchPaymentSheetParams = async () => {
+//   //   const response = await fetch(`${API_URL}/payment-sheet`, {
+//   //     method: 'POST',
+//   //     headers: {
+//   //       'Content-Type': 'application/json',
+//   //     },
+//   //   });
+//   //   const { paymentIntent, ephemeralKey, customer} = await response.json();
+
+//   //   return {
+//   //     paymentIntent,
+//   //     ephemeralKey,
+//   //     customer,
+//   //   };
+//   // };
+
+//   // Need this?
+//   const initializePaymentSheet = async () => {
+//     const {
+//       paymentIntent,
+//       ephemeralKey,
+//       customer,
+//       publishableKey,
+//     } = await fetchPaymentSheetParams();
+
+//     const { error, paymentOption } = await initPaymentSheet({
+//       merchantDisplayName: 'Kong Posh',
+//       customerId: customer,
+//       customerEphemeralKeySecret: ephemeralKey,
+//       paymentIntentClientSecret: paymentIntent,
+//       customFlow: true,
+//       // Set `allowsDelayedPaymentMethods` to true if your business can handle payment
+//       //methods that complete payment after a delay, like SEPA Debit and Sofort.
+//       //allowsDelayedPaymentMethods: true,
+//       // defaultBillingDetails: {
+//       //   name: 'Jane Doe',
+//       // }
+//     });
+//     if (!error) {
+//       setLoading(true);
+//     }
+//   };
+
+//   // KEEP THIS FOR PAYMENT W/OUT SERVER
+//   const openPaymentSheet = async () => {
+//     const { error, paymentOption, } = await presentPaymentSheet();
+
+//     if (error) {
+//       Alert.alert(`Error code: ${error.code}`, error.message);
+//     } else {
+//       // Add Code here for a confirmation screen???
+//       Alert.alert('Success', 'Your order is confirmed!');
+//     }
+//   };
+
+//   useEffect(() => {
+//     initializePaymentSheet();
+//   }, []);
+
+//   KEEP THIS FOR PAYMENT W/OUT SERVER
+//   const { error } = await confirmPaymentSheetPayment();
+//     if (error) {
+//       Alert.alert(`Error code: ${error.code}`, error.message);
+//     } else {
+//       Alert.alert(
+//         'Success',
+//         'Your order is confirmed!'
+//       );
+//     }
+
+
+// // Other code for card styles and view
+
+
+const Cart = ({navigation}) => {
+
+// Code for Stripe Payment Page
 // KEEP THIS
 const { initPaymentSheet, presentPaymentSheet, confirmPaymentSheetPayment, } = useStripe();
   // const [loading, setLoading] = useState(false);
@@ -81,9 +163,7 @@ const { initPaymentSheet, presentPaymentSheet, confirmPaymentSheetPayment, } = u
   //   }
 
 
-// Other code for card styles and view
-const Cart = ({navigation}) => {
-
+// Code for Styles and Views
     const Card = ({}) => {
       const {source, name, price, description} = route.params;
       return (
