@@ -16,16 +16,18 @@ import Desserts from '../config/Desserts';
 export default function Menu({navigation}){
     const[selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
     const[options, setOptions] = React.useState(Food);
-    const changeList = () => {
-      if(selectedCategoryIndex === 1){
+    const changeList = (idx) => {
+      console.log("Inside changeList selected category index =" + idx)
+      if(idx === 1){
         setOptions(Drinks)
-      } else if(selectedCategoryIndex === 2){
+      } else if(idx === 2){
         setOptions(Meals)
-      } else if(selectedCategoryIndex === 3){
+      } else if(idx === 3){
         setOptions(Snacks)
-      } else if(selectedCategoryIndex === 4){
+      } else if(idx === 4){
         setOptions(Desserts)
       }
+      console.log("Done with changeList selected category index =" + idx)
     }
     const CategoryList = () => {
       return (
@@ -34,7 +36,7 @@ export default function Menu({navigation}){
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={style.categoryContainer}>
         {Categories.map((category, index)=>(
-            <TouchableOpacity key={index} activeOpacity={0.8} onPress = {() => {setSelectedCategoryIndex(category.id); changeList}}>
+            <TouchableOpacity key={index} activeOpacity={0.8} onPress = {() => {changeList(category.id)}}>
                 <View 
                   style={{
                     backgroundColor:
