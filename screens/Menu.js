@@ -18,13 +18,14 @@ export default function Menu({navigation}){
     const[options, setOptions] = React.useState(Food);
     const changeList = (idx) => {
       console.log("Inside changeList selected category index =" + idx)
-      if(idx === 1){
+      setSelectedCategoryIndex(idx)
+      if(idx === 0){
         setOptions(Drinks)
-      } else if(idx === 2){
+      } else if(idx === 1){
         setOptions(Meals)
-      } else if(idx === 3){
+      } else if(idx === 2){
         setOptions(Snacks)
-      } else if(idx === 4){
+      } else if(idx === 3){
         setOptions(Desserts)
       }
       console.log("Done with changeList selected category index =" + idx)
@@ -36,7 +37,7 @@ export default function Menu({navigation}){
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={style.categoryContainer}>
         {Categories.map((category, index)=>(
-            <TouchableOpacity key={index} activeOpacity={0.8} onPress = {() => {changeList(category.id)}}>
+            <TouchableOpacity key={category.id} activeOpacity={0.8} onPress = {() => {changeList(index)}}>
                 <View 
                   style={{
                     backgroundColor:
