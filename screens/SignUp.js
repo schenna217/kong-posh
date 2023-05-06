@@ -70,6 +70,7 @@ const SignUp = () => {
                     value={password}
                     onChangeText={text => setPassword(text)}
                     style={styles.input}
+                    secureTextEntry
                 />
             </View>
             <Button
