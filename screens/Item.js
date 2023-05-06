@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }, title: {
         marginTop: 40,
-        fontSize: 35
+        fontSize: 25
     }, details: {
         alignItems: 'center',
         marginBottom: 50
