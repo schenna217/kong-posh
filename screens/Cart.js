@@ -89,7 +89,7 @@ const Cart = ({navigation}) => {
 
 // Code for Stripe Payment Page
 // KEEP THIS
-const { initPaymentSheet, presentPaymentSheet, confirmPaymentSheetPayment, } = useStripe();
+const stripe = useStripe();
   // const [loading, setLoading] = useState(false);
 
   // const fetchPaymentSheetParams = async () => {
@@ -109,47 +109,54 @@ const { initPaymentSheet, presentPaymentSheet, confirmPaymentSheetPayment, } = u
   // };
 
   // Need this?
-  const initializePaymentSheet = async () => {
-    const {
-      paymentIntent,
-      ephemeralKey,
-      customer,
-      publishableKey,
-    } = await fetchPaymentSheetParams();
+  // const initializePaymentSheet = async () => {
+  //   const {
+  //     paymentIntent,
+  //     ephemeralKey,
+  //     customer,
+  //     publishableKey,
+  //   } = await fetchPaymentSheetParams();
 
-    const { error, paymentOption } = await initPaymentSheet({
-      merchantDisplayName: 'Kong Posh',
-      customerId: customer,
-      customerEphemeralKeySecret: ephemeralKey,
-      paymentIntentClientSecret: paymentIntent,
-      customFlow: true,
-      // Set `allowsDelayedPaymentMethods` to true if your business can handle payment
-      //methods that complete payment after a delay, like SEPA Debit and Sofort.
-      //allowsDelayedPaymentMethods: true,
-      // defaultBillingDetails: {
-      //   name: 'Jane Doe',
-      // }
-    });
-    if (!error) {
-      setLoading(true);
+  //   const { error, paymentOption } = await initPaymentSheet({
+  //     merchantDisplayName: 'Kong Posh',
+  //     customerId: customer,
+  //     customerEphemeralKeySecret: ephemeralKey,
+  //     paymentIntentClientSecret: paymentIntent,
+  //     customFlow: true,
+  //     // Set `allowsDelayedPaymentMethods` to true if your business can handle payment
+  //     //methods that complete payment after a delay, like SEPA Debit and Sofort.
+  //     //allowsDelayedPaymentMethods: true,
+  //     // defaultBillingDetails: {
+  //     //   name: 'Jane Doe',
+  //     // }
+  //   });
+  //   if (!error) {
+  //     setLoading(true);
+  //   }
+  // };
+
+  const order = async (amount) => {
+    try {
+        const response = await fetch("https://web-production-4123.up.railway.app/api/carbon-back/order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ amount, uid: 'john@gmail.com' }),
+        });
+        const data = await response.json();
+        console.log(data)
+        const initSheet = await stripe.initPaymentSheet({
+            paymentIntentClientSecret: data.clientSecret,
+        });
+
+        console.log(initSheet)
+
+        const presentSheet = await stripe.presentPaymentSheet();
+    } catch (err) {
+        console.log(err);
     }
-  };
-
-  // KEEP THIS FOR PAYMENT W/OUT SERVER
-  const openPaymentSheet = async () => {
-    const { error, paymentOption, } = await presentPaymentSheet();
-
-    if (error) {
-      Alert.alert(`Error code: ${error.code}`, error.message);
-    } else {
-      // Add Code here for a confirmation screen???
-      Alert.alert('Success', 'Your order is confirmed!');
-    }
-  };
-
-  useEffect(() => {
-    initializePaymentSheet();
-  }, []);
+};
 
   // KEEP THIS FOR PAYMENT W/OUT SERVER
   // const { error } = await confirmPaymentSheetPayment();
@@ -163,27 +170,27 @@ const { initPaymentSheet, presentPaymentSheet, confirmPaymentSheetPayment, } = u
   //   }
 
 
-// Code for Styles and Views
-    const Card = ({}) => {
-      const {source, name, price, description} = route.params;
-      return (
-        <View style ={style.card}>
-          <View style = {{alignItems: 'center', top : -10}}>
-            <Image source = {source} style = {{height: 120, width: 120}}/>
-          </View>
-          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
-            <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
-                {name}
-            </Text>
-          </View>
-          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
-            <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
-                {price}
-            </Text>
-          </View>
-        </View>
-      );
-    };
+// // Code for Styles and Views
+//     const Card = ({}) => {
+//       const {source, name, price, description} = route.params;
+//       return (
+//         <View style ={style.card}>
+//           <View style = {{alignItems: 'center', top : -10}}>
+//             <Image source = {source} style = {{height: 120, width: 120}}/>
+//           </View>
+//           <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+//             <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
+//                 {name}
+//             </Text>
+//           </View>
+//           <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+//             <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
+//                 {price}
+//             </Text>
+//           </View>
+//         </View>
+//       );
+//     };
 
     return (
         <View style={styles.container}>
@@ -205,7 +212,7 @@ const { initPaymentSheet, presentPaymentSheet, confirmPaymentSheetPayment, } = u
             </ScrollView>
             <Button
               title='Checkout'
-              onPress={openPaymentSheet}
+              onPress={() => order(100)} // PRICE HERE
             />
         </View>
     )

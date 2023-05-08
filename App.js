@@ -23,7 +23,7 @@ const {Navigator, Screen} = createBottomTabNavigator();
 export default function App() {
   return(
     <StripeProvider
-      publishableKey="pk_test_51N2gBiG6PLk5ZJDBQRLQL3gGJ4GRqDpWYITQIJWB4STUkbJk7pgp8esLV34rkJyi1jiH1IPvKPMJiyriQcR67nFt00ht2GH7nH"
+      publishableKey="pk_test_51KQ8BeL1Sbu4VnBadepvuKhlBEyPg6eHW8IHCTcQ8rCLXnXFefa6bUAS1zPJXkuQ5W2XnYzxbcf5OthLW4QRBnoB00xj47hBzW"
 
       //urlScheme="your-url-scheme" // required for 3D Secure and bank redirects
       //merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
