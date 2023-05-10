@@ -44,10 +44,10 @@ const Item = ({route, navigation}) => {
                         {price}
                     </Text>
                 </View>
-                {context.includes(item) ? (
+                {(context.some(e => e['name'] === item.name)) ? (
                      <Button
                         title="Remove from Cart"
-                        onPress={() => setContext(context.filter((x) => x.description !== item.description))}
+                        onPress={() => setContext(context.filter((x) => x.name !== item.name))}
                  />
                 ):(
                      <Button
