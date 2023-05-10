@@ -16,3 +16,6 @@ Firebase Installs
 
     // need this?
     npx expo install react-native-gesture-handler
+
+    Redux Js Toolkit
+    npm install @reduxjs/toolkit

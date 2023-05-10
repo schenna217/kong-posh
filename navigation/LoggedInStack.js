@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer, } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TabNavigationState } from '@react-navigation/native';
 
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text} from 'react-native';
-
+import { Context } from '../Context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, Entypo, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
-
 import Home from '../screens/Home';
 import Menu from '../screens/Menu';
 import Cart from '../screens/Cart';
 import Item from '../screens/Item';
 import colors from '../config/colors';
 
+
 //const {Tab, Screen, Navigator} = createBottomTabNavigator();
 const Tab = createBottomTabNavigator();
 const loggedInStack = createStackNavigator();
 
 export default function UserStack() {
+    const [context, setContext] = useState([]);
     return(
         <Tab.Navigator
           screenOptions={
@@ -51,6 +52,8 @@ export default function UserStack() {
           <Tab.Screen name="Item" component={Item} options={{
             tabBarButton: () => undefined
           }}/>
+        
+
         </Tab.Navigator>
       );
 }

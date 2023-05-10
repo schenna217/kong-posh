@@ -15,18 +15,29 @@ import { ThemeProvider } from 'react-native-paper';
 import firebase from './firebase';
 import LoggedInStack from './navigation/LoggedInStack';
 import SignUporInStack from './navigation/SignUporInStack';
+import { Context } from './Context';
+import { useState } from 'react';
 
 const {Navigator, Screen} = createBottomTabNavigator();
 
 export default function App() {
+  const initialFood={
+    id: '17',
+    name: 'chicken good',
+    description: 'taste yummy',
+    price: '18.99',
+    quantity: 0,
+    image: require('./assets/images/Kashmiri_Haak.png')
+  }
+  const [context, setContext] = useState([])
   return(
-    
+   <Context.Provider value = {[context, setContext]}>
     <ThemeProvider>
       {/* <InitialCheck /> */}
       {/* <LoggedInStack /> */}
       <SignUporInStack />
     </ThemeProvider>
-    
+   </Context.Provider>
     // <>
     
     //   <NavigationContainer>

@@ -1,33 +1,25 @@
-import React from 'react'
-import { Image, View, Text, StyleSheet, ScrollView } from 'react-native'
+import React, { useContext } from 'react'
+import { Image, View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native'
 import Button from '../components/Button'
-import Item from './Item'
-import RestaurantCard, { setDescription } from '../components/RestaurantCard'
+import {Item} from './Item'
+import Cartfxns, { cartSlice } from '../components/Cartfxns'
+import Menu from './Menu'
+import { Provider } from 'react-native-paper'
+import store from '../Context'
+import { FlatList } from 'react-native-gesture-handler'
+import Food from '../components/Food'
+import { Context } from '../Context'
+const {width} = Dimensions.get("screen");
+const cardWidth = width/2 - 20;
+import colors from '../config/colors'
 
-const Cart = ({navigation}) => {
 
-    const Card = ({}) => {
-      const {source, name, price, description} = route.params;
-      return (
-        <View style ={style.card}>
-          <View style = {{alignItems: 'center', top : -10}}>
-            <Image source = {source} style = {{height: 120, width: 120}}/>
-          </View>
-          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
-            <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
-                {name}
-            </Text>
-          </View>
-          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
-            <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
-                {price}
-            </Text>
-          </View>
-        </View>
-      );
-    };
 
+const Cart = ({route, navigation}) => {
+   const [context, setContext] = useContext(Context);
+   const sum = 0;
     return (
+      <ScrollView>
         <View style={styles.container}>
             <Text style={styles.headerText}>
                 Welcome To Cart!
@@ -40,14 +32,34 @@ const Cart = ({navigation}) => {
                 Total amount:
             </Text>
             <Text style={styles.text2}>
-                $0.00
+                {sum}
             </Text>
-            <ScrollView>
-            
-            </ScrollView>
+            <View>
+            <View>
+            {context.map((item)=>(
+              <View style ={styles.card}>
+                <View style = {{alignItems: 'center', top : 0}}>
+                  <Image source = {item.source} style = {{height: 90 , width: 100}}/>
+                </View>
+                <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+                  <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
+                      {item.name}
+                  </Text>
+                </View>
+                <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+                  <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
+                      {item.price}
+                  </Text>
+                </View>
+              </View>
+            ))}
+            </View>
+            </View>
         </View>
-    )
+      </ScrollView>
+    );
 }
+
 
 const styles = StyleSheet.create({
     container: {
@@ -82,6 +94,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: 10,
         
+    },
+    card:{
+      backgroundColor: "white",
     }
 })
 

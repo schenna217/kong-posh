@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, ScrollView, FlatList, Dimensions, Image, Text, TouchableOpacity } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import HeaderTabs from '../components/HeaderTabs';
@@ -12,8 +12,9 @@ import Meals from '../config/Meals';
 import Drinks from '../config/Drinks';
 import Snacks from '../config/Snacks';
 import Desserts from '../config/Desserts';
-
+import { Context } from '../Context';
 export default function Menu({navigation}){
+    const [context, setContext] = useContext(Context)
     const[selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
     const[options, setOptions] = React.useState(Food);
     const changeList = (idx) => {
@@ -21,6 +22,8 @@ export default function Menu({navigation}){
       setSelectedCategoryIndex(idx)
       if(idx === 0){
         setOptions(Drinks)
+        const newFood = context.concat(Drinks);
+        setContext(newFood);
       } else if(idx === 1){
         setOptions(Meals)
       } else if(idx === 2){

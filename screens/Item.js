@@ -1,18 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { View, Image, ImageBackground, Text, StyleSheet, ScrollView} from 'react-native'
 import Button from '../components/Button';
-
+import { Context } from '../Context';
 
 
 const Item = ({route, navigation}) => {
 
-    const cartArray = [{}];
-    const [idNum, setIdNum] = useState(1);
+    const [context, setContext] = useContext(Context)
     const {source, name, price, description} = route.params;
-    const addToCart = () => {
-        cartArray.push({source, name, price}),
-        setIdNum(cartArray.length + 1)
-    }
+    
+   
+    console.log("cart items", context)
+    const item = {
+        source: source,
+        name: name,
+        price: price,
+        description: description,
+    };
+
+    
+    
     return (
         <ScrollView style={styles.container}>
             <View style={styles.top}>
@@ -37,15 +44,17 @@ const Item = ({route, navigation}) => {
                         {price}
                     </Text>
                 </View>
-                <Button
-                    title="Add to Cart"
-                    onPress={() => navigation.navigate("Cart", {
-                        source: source,
-                        name: name,
-                        price: price,
-                        description: description
-                    }, addToCart)}
+                {context.includes(item) ? (
+                     <Button
+                        title="Remove from Cart"
+                        onPress={() => setContext(context.filter((x) => x.description !== item.description))}
+                 />
+                ):(
+                     <Button
+                        title="Add to Cart"
+                        onPress={() => setContext([...context,item])}
                 />
+                )}
             </View>
         </ScrollView>
     )
