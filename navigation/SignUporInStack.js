@@ -13,7 +13,7 @@ export default function SignUporInStack() {
             <Stack.Navigator>
                 <Stack.Screen name="SignUp" component={SignUp}/>
                 <Stack.Screen name="SignIn" component={SignIn}/>
-                <Stack.Screen name="StackHome" component={LoggedInStack} />
+                <Stack.Screen name="StackHome" component={LoggedInStack} options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>
     )

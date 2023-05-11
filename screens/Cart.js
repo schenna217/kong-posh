@@ -38,7 +38,7 @@ const Cart = ({route, navigation}) => {
             <View>
             {context.map((item)=>(
               <View style ={styles.card}>
-                <View style = {{alignItems: 'center', top : 0}}>
+                <View style = {{alignItems: 'flex-start', top : 0}}>
                   <Image source = {item.source} style = {{height: 90 , width: 100}}/>
                 </View>
                 <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     },
     card:{
       backgroundColor: "white",
+      flexDirection: 'row'
     }
 })
 
