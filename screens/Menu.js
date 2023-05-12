@@ -73,11 +73,11 @@ export default function Menu({navigation}){
        })
        }>
         <View style ={style.card}>
-          <View style = {{alignItems: 'center', top : -10}}>
+          <View style = {{alignItems: 'center', top : 10}}>
             <Image source = {food.image} style = {{height: 120, width: 120}}/>
           </View>
-          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
-            <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
+          <View style = {{marginHorizontal: 10, alignItems: 'center', marginTop: 10}}>
+            <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center', textAlign: 'center'}}>
                 {food.name}
             </Text>
           </View>
@@ -95,11 +95,11 @@ export default function Menu({navigation}){
         <View style = {style.header}>
           <View>
             <View style = {{flexDirection: 'row'}}>
-              <Text style={{fontSize: 28}}>
+              <Text style={{fontSize: 28, paddingTop: 20}}>
                 Hello,
               </Text>
-              <Text style={{fontSize: 28, fontWeight: 'bold', marginLeft: 10}}>
-                User
+              <Text style={{fontSize: 28, fontWeight: 'bold', marginLeft: 10, paddingTop: 20}}>
+                User!
               </Text>
             </View>
             <Text style={{marginTop: 5, fontSize: 22, color: colors.primary}}>
@@ -107,7 +107,7 @@ export default function Menu({navigation}){
             </Text>
           </View>
         </View>
-        <View style = {{marginTop: 40, flexDirection: 'row', paddingHorizontal: 20}}>
+        <View style = {{flexDirection: 'row', paddingHorizontal: 20}}>
           <Searchbar style={style.searchBar} placeholder="Search"/>
         </View>
         <View><CategoryList/></View>

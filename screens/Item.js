@@ -24,7 +24,7 @@ const Item = ({route, navigation}) => {
         <ScrollView style={styles.container}>
             <View style={styles.top}>
                 <Button
-                    title= "<-"
+                    title= "Back"
                     onPress={() => navigation.navigate("Menu")}
                 />
             </View>
@@ -65,10 +65,10 @@ const styles = StyleSheet.create({
         flex: 1,
     }, picture: {
         height: 200,
-        width: 175,
+        width: 200,
         marginTop: 50
     }, top: {
-        marginLeft: 50,
+        marginLeft: 5,
         paddingTop: 30,
         alignItems: 'flex-start'
     }, bottom: {
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 50
     }, descriptionText: {
-        fontSize: 12
+        fontSize: 12,
+        paddingHorizontal: 20,
     }
 })
 

@@ -6,9 +6,6 @@ import colors from '../config/colors';
 import Item from './Item'
 import RestaurantCard, { setDescription } from '../components/RestaurantCard'
 import { useStripe } from '@stripe/stripe-react-native'
-import colors from '../config/colors';
-import RestaurantCard, { setDescription } from '../components/RestaurantCard'
-import { useStripe } from '@stripe/stripe-react-native'
 
 // Stripe Code for displaying Payment Element and collecting payment details
 
@@ -69,7 +66,8 @@ const order = async (amount) => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.headerText}>Welcome to Cart!</Text>
-      <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} />
+      {/* <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} /> */}
+      <Button title="Clear Cart" onPress={clearCart} />
       <View style={styles.totalAmountContainer}>
         <Text style={styles.totalAmountText}>Total amount:</Text>
         <Text style={styles.totalAmount}>{totalPrice}</Text>
@@ -86,7 +84,10 @@ const order = async (amount) => {
         ))}
       </View>
       <View style={styles.clearButtonContainer}>
-        <Button title="Clear Cart" onPress={clearCart} />
+        <Button
+              title='Checkout'
+              onPress={() => order(100)} // PRICE HERE
+            />
       </View>
     </ScrollView>
   );
