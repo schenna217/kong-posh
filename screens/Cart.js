@@ -148,6 +148,7 @@ const stripe = useStripe();
         console.log(data)
         const initSheet = await stripe.initPaymentSheet({
             paymentIntentClientSecret: data.clientSecret,
+            merchantDisplayName: 'KongPosh'
         });
 
         console.log(initSheet)
@@ -171,26 +172,26 @@ const stripe = useStripe();
 
 
 // // Code for Styles and Views
-//     const Card = ({}) => {
-//       const {source, name, price, description} = route.params;
-//       return (
-//         <View style ={style.card}>
-//           <View style = {{alignItems: 'center', top : -10}}>
-//             <Image source = {source} style = {{height: 120, width: 120}}/>
-//           </View>
-//           <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
-//             <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
-//                 {name}
-//             </Text>
-//           </View>
-//           <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
-//             <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
-//                 {price}
-//             </Text>
-//           </View>
-//         </View>
-//       );
-//     };
+    const Card = ({}) => {
+      const {source, name, price, description} = route.params;
+      return (
+        <View style ={style.card}>
+          <View style = {{alignItems: 'center', top : -10}}>
+            <Image source = {source} style = {{height: 120, width: 120}}/>
+          </View>
+          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+            <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
+                {name}
+            </Text>
+          </View>
+          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+            <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
+                {price}
+            </Text>
+          </View>
+        </View>
+      );
+    };
 
     return (
         <View style={styles.container}>
@@ -212,7 +213,7 @@ const stripe = useStripe();
             </ScrollView>
             <Button
               title='Checkout'
-              onPress={() => order(100)} // PRICE HERE
+              onPress={() => order(200)} // PRICE HERE
             />
         </View>
     )
