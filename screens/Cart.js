@@ -68,7 +68,7 @@ const order = async (amount) => {
         <Text style={styles.headerText}>Welcome To Cart!</Text>
         {/* <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} /> */}
         <View style={styles.clearButtonContainer}>
-          <Button title="Clear Cart" onPress={clearCart} /> 
+           
         </View>
         <Text style={styles.text}>Total amount:</Text>
         <Text style={styles.text2}>{totalPrice}</Text>
