@@ -5,6 +5,14 @@ import { Context } from '../Context';
 const { width } = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
 import colors from '../config/colors';
+import Item from './Item'
+import RestaurantCard, { setDescription } from '../components/RestaurantCard'
+import { useStripe } from '@stripe/stripe-react-native'
+
+// Stripe Code for displaying Payment Element and collecting payment details
+
+// // Other code for card styles and view
+
 
 const Cart = ({ route, navigation }) => {
   // initialize context and totalPrice states using useContext and useState hooks
@@ -26,12 +34,42 @@ const Cart = ({ route, navigation }) => {
     setTotalPrice(0);
   };
 
-  
+  // Code for Stripe Payment Page
+// KEEP THIS
+const stripe = useStripe();
+
+const order = async (amount) => {
+  try {
+      const response = await fetch("https://web-production-4123.up.railway.app/api/carbon-back/order", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount, uid: 'john@gmail.com' }),
+      });
+      const data = await response.json();
+      console.log(data)
+      const initSheet = await stripe.initPaymentSheet({
+          paymentIntentClientSecret: data.clientSecret,
+          merchantDisplayName: 'KongPosh'
+      });
+
+      console.log(initSheet)
+
+      const presentSheet = await stripe.presentPaymentSheet();
+  } catch (err) {
+      console.log(err);
+  }
+};
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.headerText}>Welcome To Cart!</Text>
-        <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} />
+        {/* <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} /> */}
+        <View style={styles.clearButtonContainer}>
+          <Button title="Clear Cart" onPress={clearCart} /> 
+        </View>
         <Text style={styles.text}>Total amount:</Text>
         <Text style={styles.text2}>{totalPrice}</Text>
         <View>
@@ -52,8 +90,12 @@ const Cart = ({ route, navigation }) => {
           </View>
         </View>
         <View style={styles.clearButtonContainer}>
-          <Button title="Clear Cart" onPress={clearCart} />
+          <Button title="Clear Cart" onPress={clearCart} /> 
         </View>
+        <Button
+              title='Checkout'
+              onPress={() => order(200)} // PRICE HERE
+            />
       </View>
     </ScrollView>
   );
@@ -68,8 +110,8 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginLeft: 75,
-    marginTop: 60
+    marginLeft: 60,
+    marginTop: 60,
   },
   listText: {
     fontSize: 16,
@@ -80,15 +122,14 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    color: 'dodgerblue',
+    color: 'black',
     fontWeight: 'bold',
     marginLeft: 10,
-    marginTop: 40
   },
   text2: {
     alignItems: 'baseline',
     fontSize: 20,
-    color: 'red',
+    color: colors.primary,
     fontWeight: 'bold',
     marginLeft: 10
   },
@@ -99,7 +140,7 @@ const styles = StyleSheet.create({
   clearButtonContainer: {
     marginBottom: 20,
     marginHorizontal: 20
-  }
+  },
 });
 
 export default Cart;
