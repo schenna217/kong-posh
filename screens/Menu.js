@@ -74,7 +74,7 @@ export default function Menu({navigation}){
        }>
         <View style ={style.card}>
           <View style = {{alignItems: 'center', top : 10}}>
-            <Image source = {food.image} style = {{height: 120, width: 120}}/>
+            <Image source = {food.image} style = {{height: 120, width: 120, borderRadius: 15,}}/>
           </View>
           <View style = {{marginHorizontal: 10, alignItems: 'center', marginTop: 10}}>
             <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center', textAlign: 'center'}}>
@@ -150,6 +150,9 @@ const style = StyleSheet.create({
     marginBottom: 20,
     marginTop: 50,
     borderRadius: 15,
+    shadowColor: colors.primary,
+    shadowRadius: 5,
+    shadowOpacity: 0.75,
     elevation: 13,
     backgroundColor: 'white',
   },
