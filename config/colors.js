@@ -1,7 +1,7 @@
 export default {
-    primary: '#009688',
+    primary: '#FD8653',
     secondary: '#ff9800',
-    white: '#fff',
+    white: '#FFFFFF',
     black: '#000',
     peach:'#FFCC99',
   };
