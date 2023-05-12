@@ -19,3 +19,7 @@ Firebase Installs
 
     Redux Js Toolkit
     npm install @reduxjs/toolkit
+    // Stripe Install Statements
+    npm install @stripe/stripe-react-native
+    // ???
+    npx expo install @stripe/stripe-react-native@0.23.3

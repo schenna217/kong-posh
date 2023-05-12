@@ -3,6 +3,17 @@ import { Image, View, Text, StyleSheet, ScrollView, Dimensions } from 'react-nat
 import Button from '../components/Button';
 import { Context } from '../Context';
 import colors from '../config/colors';
+import Item from './Item'
+import RestaurantCard, { setDescription } from '../components/RestaurantCard'
+import { useStripe } from '@stripe/stripe-react-native'
+import colors from '../config/colors';
+import RestaurantCard, { setDescription } from '../components/RestaurantCard'
+import { useStripe } from '@stripe/stripe-react-native'
+
+// Stripe Code for displaying Payment Element and collecting payment details
+
+// // Other code for card styles and view
+
 
 const { width } = Dimensions.get('screen');
 const cardWidth = width - 40;
@@ -26,6 +37,34 @@ const Cart = ({ route, navigation }) => {
     setContext([]);
     setTotalPrice(0);
   };
+
+   // Code for Stripe Payment Page
+  // KEEP THIS
+const stripe = useStripe();
+
+const order = async (amount) => {
+  try {
+      const response = await fetch("https://web-production-4123.up.railway.app/api/carbon-back/order", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount, uid: 'john@gmail.com' }),
+      });
+      const data = await response.json();
+      console.log(data)
+      const initSheet = await stripe.initPaymentSheet({
+          paymentIntentClientSecret: data.clientSecret,
+          merchantDisplayName: 'KongPosh'
+      });
+
+      console.log(initSheet)
+
+      const presentSheet = await stripe.presentPaymentSheet();
+  } catch (err) {
+      console.log(err);
+  }
+};
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
