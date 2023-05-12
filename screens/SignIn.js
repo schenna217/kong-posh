@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { StyleSheet, View, Text, TextInput} from 'react-native'
+import { StyleSheet, View, Text, TextInput, Image } from 'react-native'
 import Button from '../components/Button'
 import {auth} from '../firebase';
 import { signInWithEmailAndPassword } from '@firebase/auth';
@@ -39,7 +39,11 @@ const SignIn = () => {
 
     return (
         <View style={styles.container}>
-            <Text style = {styles.welcomeText}>Welcome to Kong Posh!</Text>
+            <Image
+                source={require('../assets/icons/logoHead.png')}
+                style={styles.logo}
+            />
+            <Text style = {styles.welcomeText}>Welcome back to Kong Posh!</Text>
             {/* <Text>Please sign in</Text> */}
             <View style = {styles.inputContainer}>
                 <TextInput
@@ -66,27 +70,33 @@ const SignIn = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        //paddingTop: 50,
-    }, inputContainer: {
-        margin: 30,
-        width: '80%',
-        alignItems: 'center',
-    }, input: {
-        backgroundColor: 'white',
-        paddingHorizontal: 15,
-        paddingVertical: 10,
-        borderRadius: 10,
-        marginTop: 30,
-        width: 250,
-    }, welcomeText: {
-        fontSize: 24,
-        alignItems: 'center',
-        paddingVertical: 20,
-    }
-});
-
-
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    inputContainer: {
+      margin: 30,
+      width: '80%',
+      alignItems: 'center',
+    },
+    input: {
+      backgroundColor: 'white',
+      paddingHorizontal: 15,
+      paddingVertical: 10,
+      borderRadius: 10,
+      marginTop: 20,
+      width: 250,
+    },
+    welcomeText: {
+      fontSize: 24,
+      alignItems: 'center',
+      paddingVertical: 20,
+    },
+    logo: {
+      width: 100,
+      height: 100,
+      marginTop: 30,
+      alignSelf: 'center',
+    },
+  });
 export default SignIn

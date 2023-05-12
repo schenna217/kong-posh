@@ -1,91 +1,68 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, Entypo, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
-import Home from './screens/Home'
-import SignIn from './screens/SignIn'
-import SignUp from './screens/SignUp'
-import Cart from './screens/Cart'
-import Item from './screens/Item'
+import Home from './screens/Home';
+import SignIn from './screens/SignIn';
+import SignUp from './screens/SignUp';
+import Cart from './screens/Cart';
+import Item from './screens/Item';
 import Menu from './screens/Menu';
 import colors from './config/colors';
-import InitialCheck from './navigation/InitialCheck';
 import { ThemeProvider } from 'react-native-paper';
 import firebase from './firebase';
 import LoggedInStack from './navigation/LoggedInStack';
 import SignUporInStack from './navigation/SignUporInStack';
 import { Context } from './Context';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
 
-const {Navigator, Screen} = createBottomTabNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
 export default function App() {
-  const initialFood={
+  const initialFood = {
     id: '17',
     name: 'chicken good',
     description: 'taste yummy',
     price: '18.99',
     quantity: 0,
     image: require('./assets/images/Kashmiri_Haak.png')
+  };
+
+  const [appIsReady, setAppIsReady] = useState(false);
+  const [context, setContext] = useState([]);
+
+  useEffect(() => {
+    async function show_splash_screen() {
+      try {
+        // Simulate a 1-second delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        await SplashScreen.hideAsync();
+        setAppIsReady(true);
+      }
+    }
+
+    show_splash_screen();
+  }, []);
+
+  if (!appIsReady) {
+    // Render nothing while the app is loading
+    return null;
   }
-  const [context, setContext] = useState([])
-  return(
-   <Context.Provider value = {[context, setContext]}>
-    <ThemeProvider>
-      {/* <InitialCheck /> */}
-      {/* <LoggedInStack /> */}
-      <SignUporInStack />
-    </ThemeProvider>
-   </Context.Provider>
-    // <>
-    
-    //   <NavigationContainer>
-    //     <Navigator 
-    //       screenOptions={
-    //         ({ route }) => ({
-    //           tabBarIcon: ({ focused, }) => {
-    //             let c = focused ? colors.primary: "black";
-    //             let rn = route.name
-  
-    //             if (rn == "Home") {
-    //               return <Entypo name="home" size={24} color={c} />
-    //             } else if (rn == "Cart") {
-    //               return <Entypo name="shopping-cart" size={24} color={c} />
-    //             // } else if (rn == "SignUp") {
-    //             //   return <FontAwesome name="arrow-circle-up" size={24} color={c} />
-    //             // } else if (rn == "SignIn") {
-    //             //   return <Entypo name="login" size={24} color={c} />
-    //             } else if (rn == "Menu") {
-    //               return <FontAwesome name="apple" size={24} color={c} />
-    //             } else if (rn == "Item") {
-    //               return <MaterialCommunityIcons name="food-drumstick" size={24} color={c} />
-    //             }
-    //           },
-    //           tabBarShowLabel: false,
-    //           headerShown: false,
-    //         })
-    //       }
-    //       initialRouteName={"SignUp"}
-    //     >
-         
-    //       <Screen name="Home" component={Home}/>
-    //       {/* <Screen name="SignIn" component={SignIn} options={{tabBarStyle: {display: 'none'}}}/>
-    //       <Screen name="SignUp" component={SignUp} options={{tabBarStyle: {display: 'none'}}}/> */}
-    //       <Screen name="Menu" component={Menu}/>
-    //       <Screen name="Item" component={Item}/>
-    //       <Screen name="Cart" component={Cart}/>
 
-    //     </Navigator>
-    //   </NavigationContainer>
-    //   <StatusBar style="auto"/>
-    // </>
-    
+  // Render the app content after the splash screen is done
+  return (
+    <Context.Provider value={[context, setContext]}>
+      <ThemeProvider>
+        <SignUporInStack />
+      </ThemeProvider>
+    </Context.Provider>
   );
-  
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
