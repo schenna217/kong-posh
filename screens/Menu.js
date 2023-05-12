@@ -51,7 +51,7 @@ export default function Menu({navigation}){
                    <View style = {style.categoryBtnImageIcon}>
                       <Image 
                         source = {category.image}
-                        style = {{height: 15, width: 15, resizeMode: 'cover'}}
+                        style = {{height: 15, width: 15, resizeMode: 'cover', borderRadius: 30}}
                       />
                     </View>
                     <Text style={{fontSize: 15, fontWeight: 'bold', marginLeft: 10, color: selectedCategoryIndex == index ? 'white': 'black'}}>
