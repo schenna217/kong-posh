@@ -22,8 +22,6 @@ export default function Menu({navigation}){
       setSelectedCategoryIndex(idx)
       if(idx === 0){
         setOptions(Drinks)
-        const newFood = context.concat(Drinks);
-        setContext(newFood);
       } else if(idx === 1){
         setOptions(Meals)
       } else if(idx === 2){

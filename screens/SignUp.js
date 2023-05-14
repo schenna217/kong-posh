@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, TextInput, Image } from 'react-native';
 import Button from '../components/Button';
 import { auth } from '../firebase';
@@ -11,7 +11,8 @@ const SignUp = () => {
   const { email, setEmail } = Email();
   const { password, setPassword } = Password();
   const navigation = useNavigation();
-
+  const [first, setFirst] = useState('');
+  const [last, setLast] = useState('');
   const goToSignIn = () => {
     navigation.navigate('SignIn');
   };
@@ -67,6 +68,16 @@ const SignUp = () => {
         title="Already have an account?"
         onPress={goToSignIn}
         style={{ marginTop: 10 }}
+      />
+      <TextInput
+        placeholder='First Name'
+        onChangeText={first => setFirst(first)}
+        defaultValue={first}
+      />
+      <TextInput
+        placeholder='Last Name'
+        onChangeText={last => setLast(last)}
+        defaultValue={last}
       />
     </View>
   );
