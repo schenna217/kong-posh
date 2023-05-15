@@ -48,18 +48,13 @@ const Cart = ({ route, navigation }) => {
           amount: amount,
         }),
       });
-          paymentIntentClientSecret: data.clientSecret,
-          merchantDisplayName: 'KongPosh'
       const { client_secret } = await response.json();
+      const result = await stripe.confirmPayment({
+        clientSecret: client_secret,
+        paymentMethodId: 'pm_card_visa', // Replace with the ID of your payment method
       });
-
-      console.log(initSheet)
-
-      const presentSheet = await stripe.presentPaymentSheet();
-  } catch (err) {
-      console.log(err);
-  }
-};
+      if (result.error) {
+        console.log(result.error);
       } else {
         console.log(result);
       }
