@@ -61,33 +61,43 @@ export default function Menu({navigation}){
       </ScrollView>
       );
     };
-    const Card = ({food}) => {
-      return (
-       <TouchableOpacity onPress={() => navigation.navigate('Item', {
-         source: food.image,
-         name: food.name,
-         price: food.price,
-         description: food.description
-       })
-       }>
-        <View style ={style.card}>
-          <View style = {{alignItems: 'center', top : 10}}>
-            <Image source = {food.image} style = {{height: 120, width: 120, borderRadius: 15,}}/>
-          </View>
-          <View style = {{marginHorizontal: 10, alignItems: 'center', marginTop: 10}}>
-            <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center', textAlign: 'center'}}>
-                {food.name}
-            </Text>
-          </View>
-          <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
-            <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
-                {food.price}
-            </Text>
-          </View>
-        </View>
-       </TouchableOpacity>
-      );
-    };
+    // ...
+
+const Card = ({food}) => {
+  const [showPrice, setShowPrice] = React.useState(false);
+
+  return (
+   <TouchableOpacity
+    onPress={() => navigation.navigate('Item', {
+      source: food.image,
+      name: food.name,
+      price: food.price,
+      description: food.description
+    })}
+    onLongPress={() => setShowPrice(true)}
+    onPressOut={() => setShowPrice(false)}
+   >
+    <View style ={style.card}>
+      <View style = {{alignItems: 'center', top : -10}}>
+        <Image source = {food.image} style = {{height: 120, width: 120}}/>
+      </View>
+      <View style = {{marginHorizontal: 10, alignItems: 'center'}}>
+        <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: 'center'}}>
+            {food.name}
+        </Text>
+        {showPrice && (
+          <Text style={{fontSize: 15, fontWeight: 'bold', alignItems: 'center'}}>
+              {food.price}
+          </Text>
+        )}
+      </View>
+    </View>
+   </TouchableOpacity>
+  );
+};
+
+// ...
+
     return(
       <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
         <View style = {style.header}>
