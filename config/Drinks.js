@@ -3,7 +3,7 @@ const Drinks = [
         id: '1',
         name: 'Lipton Chai',
         description: 'Benchod.',
-        price: '$2.99',
+        price: '2.99',
         quantity: 0,
         image: require('../assets/images/liptonChai.jpg.png')
     },
@@ -11,7 +11,7 @@ const Drinks = [
         id: '2',
         name: 'Masala Chai',
         description: 'Benchod.',
-        price: '$2.99',
+        price: '2.99',
         quantity: 0,
         image: require('../assets/images/masalaChai.png')
     },
@@ -19,7 +19,7 @@ const Drinks = [
         id: '3',
         name: 'Punjabi Lassi',
         description: 'Benchod.',
-        price: '$3.99',
+        price: '3.99',
         quantity: 0,
         image: require('../assets/images/punjabiLassi.png')
     },
@@ -27,7 +27,7 @@ const Drinks = [
         id: '4',
         name: 'Noon Chai',
         description: 'Benchod.',
-        price: '$3.99',
+        price: '3.99',
         quantity: 0,
         image: require('../assets/images/noonChai.png')
     },
@@ -35,7 +35,7 @@ const Drinks = [
         id: '5',
         name: 'Kahwa',
         description: 'Benchod.',
-        price: '$3.99',
+        price: '3.99',
         quantity: 0,
         image: require('../assets/images/Kahwa.png')
     },
@@ -43,7 +43,7 @@ const Drinks = [
         id: '6',
         name: 'Nimbu Pani',
         description: 'Benchod.',
-        price: '$1.99',
+        price: '1.99',
         quantity: 0,
         image: require('../assets/images/NimbuPani.png')
     },
@@ -51,7 +51,7 @@ const Drinks = [
         id: '7',
         name: 'Badam Milk',
         description: 'Benchod.',
-        price: '$2.99',
+        price: '2.99',
         quantity: 0,
         image: require('../assets/images/badamMilk.png')
     },
@@ -59,7 +59,7 @@ const Drinks = [
         id: '8',
         name: 'Thandai',
         description: 'Benchod.',
-        price: '$0.99',
+        price: '0.99',
         quantity: 0,
         image: require('../assets/images/Thandai.png')
     },

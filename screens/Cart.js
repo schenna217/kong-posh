@@ -17,9 +17,9 @@ const Cart = ({ route, navigation }) => {
 
   // useEffect hook to update the totalPrice state based on the items in the context state
   useEffect(() => {
-    let sum = 0;
+    let sum = 0.0;
     context.forEach(item => {
-      sum += item.price;
+      sum +=  parseFloat(item.price);
     });
     setTotalPrice(sum);
   }, [context]);
@@ -70,7 +70,7 @@ const Cart = ({ route, navigation }) => {
         <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} />
         <View style={styles.totalAmountContainer}>
           <Text style={styles.totalAmountText}>Total amount:</Text>
-          <Text style={styles.totalAmount}>{totalPrice}</Text>
+          <Text style={styles.totalAmount}>${totalPrice}</Text>
         </View>
         <View style={styles.itemsContainer}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -79,7 +79,7 @@ const Cart = ({ route, navigation }) => {
                 <Image source={item.source} style={styles.cardImage} />
                 <View style={styles.cardInfo}>
                   <Text style={styles.cardTitle}>{item.name}</Text>
-                  <Text style={styles.cardPrice}>{item.price}</Text>
+                  <Text style={styles.cardPrice}>${item.price}</Text>
                 </View>
               </View>
             ))}
@@ -102,17 +102,20 @@ const Cart = ({ route, navigation }) => {
 const styles = StyleSheet.create({
 container: {
 alignItems: 'center',
-paddingVertical: 20,
+marginTop: 100,
+
 },
 headerText: {
-fontSize: 24,
+fontSize: 28,
 fontWeight: 'bold',
 marginBottom: 20,
+marginLeft: 15,
 },
 totalAmountContainer: {
 flexDirection: 'row',
 alignItems: 'center',
 marginBottom: 20,
+marginLeft: 15,
 },
 totalAmountText: {
 fontSize: 18,
