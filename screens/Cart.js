@@ -63,7 +63,7 @@ const order = async (amount) => {
         <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} />
         <View style={styles.totalAmountContainer}>
           <Text style={styles.totalAmountText}>Total amount:</Text>
-          <Text style={styles.totalAmount}>{totalPrice}</Text>
+          <Text style={styles.totalAmount}>${totalPrice}</Text>
         </View>
         <View style={styles.itemsContainer}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
