@@ -9,7 +9,6 @@ import { FontAwesome5 } from '@expo/vector-icons';
 const Item = ({route, navigation}) => {
 
     const [context, setContext] = useContext(Context)
-    const [favs, setFavs] = useContext(Favs) 
     const {source, name, price, description} = route.params;
     
    
@@ -20,14 +19,6 @@ const Item = ({route, navigation}) => {
         price: price,
         description: description,
     };
-    const favorites = {
-        source: source,
-        name: name,
-        price: price,
-        description: description,
-    };
-
-    
     
     return (
         <ScrollView style={styles.container}>
@@ -63,20 +54,7 @@ const Item = ({route, navigation}) => {
                         title="Add to Cart"
                         onPress={() => setContext([...context,item])}
                 />
-                )}
-                <View>
-                {(favs.some(a => a['name'] === favorites.name)) ? (
-                     <TouchableHighlight style
-                        title="Remove from Favorites"
-                        onPress={() => setFavs(favs.filter((b) => b.name !== favorites.name))}
-                 />
-                ):(
-                     <TouchableHighlight
-                        title="Add to Favorites"
-                        onPress={() => setFavs([...favs,favorites])}
-                />
-                )}
-                </View>
+                )}                
             </View>
         </ScrollView>
     )

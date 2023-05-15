@@ -13,7 +13,6 @@ import Menu from '../screens/Menu';
 import Cart from '../screens/Cart';
 import Item from '../screens/Item';
 import colors from '../config/colors';
-import Favorites from '../screens/Favorites';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 
@@ -37,9 +36,7 @@ export default function UserStack() {
                   return <Entypo name="shopping-cart" size={24} color={c} />
                 } else if (rn == "Menu") {
                   return <FontAwesome name="apple" size={24} color={c} />
-                } else if (rn == "Favorites") {
-                  return <FontAwesome5 name="star" size={24} color="black" />
-                }
+                } 
               },
               tabBarShowLabel: false,
               headerShown: false,
@@ -51,7 +48,6 @@ export default function UserStack() {
           <Tab.Screen name="Home" component={Home} />
           <Tab.Screen name="Menu" component={Menu}  />
           <Tab.Screen name="Cart" component={Cart} />
-          <Tab.Screen name="Favorites" component={Favorites} />
           <Tab.Screen name="Item" component={Item} options={{
             tabBarButton: () => undefined
           }}/>
