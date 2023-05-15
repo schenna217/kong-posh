@@ -2,17 +2,13 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Image, View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import Button from '../components/Button';
 import { Context } from '../Context';
+import colors from '../config/colors';
+import Item from './Item';
+import RestaurantCard, { setDescription } from '../components/RestaurantCard';
+import { useStripe } from '@stripe/stripe-react-native';
+
 const { width } = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
-import colors from '../config/colors';
-import Item from './Item'
-import RestaurantCard, { setDescription } from '../components/RestaurantCard'
-import { useStripe } from '@stripe/stripe-react-native'
-
-// Stripe Code for displaying Payment Element and collecting payment details
-
-// // Other code for card styles and view
-
 
 const Cart = ({ route, navigation }) => {
   // initialize context and totalPrice states using useContext and useState hooks
@@ -35,23 +31,26 @@ const Cart = ({ route, navigation }) => {
   };
 
   // Code for Stripe Payment Page
-// KEEP THIS
-const stripe = useStripe();
+  const stripe = useStripe();
 
-const order = async (amount) => {
-  try {
-      const response = await fetch("https://web-production-4123.up.railway.app/api/carbon-back/order", {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ amount, uid: 'john@gmail.com' }),
+  const order = async (amount) => {
+    try {
+      await stripe.initStripe({
+        publishableKey: 'YOUR_PUBLISHABLE_KEY',
       });
-      const data = await response.json();
-      console.log(data)
-      const initSheet = await stripe.initPaymentSheet({
+
+      const response = await fetch("https://web-production-4123.up.railway.app/api/carbon-back/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: amount,
+        }),
+      });
           paymentIntentClientSecret: data.clientSecret,
           merchantDisplayName: 'KongPosh'
+      const { client_secret } = await response.json();
       });
 
       console.log(initSheet)
@@ -61,86 +60,114 @@ const order = async (amount) => {
       console.log(err);
   }
 };
+      } else {
+        console.log(result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.headerText}>Welcome To Cart!</Text>
-        {/* <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} /> */}
-        <View style={styles.clearButtonContainer}>
-           
+    <View style={styles.container}>
+      <ScrollView>
+        <Text style={styles.headerText}>Welcome to Cart!</Text>
+        <Button title="Anything else?" onPress={() => navigation.navigate('Menu')} />
+        <View style={styles.totalAmountContainer}>
+          <Text style={styles.totalAmountText}>Total amount:</Text>
+          <Text style={styles.totalAmount}>{totalPrice}</Text>
         </View>
-        <Text style={styles.text}>Total amount:</Text>
-        <Text style={styles.text2}>{totalPrice}</Text>
-        <View>
-          <View>
+        <View style={styles.itemsContainer}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {context.map(item => (
               <View style={styles.card} key={item.id}>
-                <View style={{ alignItems: 'flex-start', top: 0 }}>
-                  <Image source={item.source} style={{ height: 90, width: 100 }} />
-                </View>
-                <View style={{ marginHorizontal: 10, alignItems: 'center' }}>
-                  <Text style={{ fontSize: 20, fontWeight: 'bold', alignItems: 'center' }}>{item.name}</Text>
-                </View>
-                <View style={{ marginHorizontal: 10, alignItems: 'center' }}>
-                  <Text style={{ fontSize: 15, fontWeight: 'bold', alignItems: 'center' }}>{item.price}</Text>
+                <Image source={item.source} style={styles.cardImage} />
+                <View style={styles.cardInfo}>
+                  <Text style={styles.cardTitle}>{item.name}</Text>
+                  <Text style={styles.cardPrice}>{item.price}</Text>
                 </View>
               </View>
             ))}
-          </View>
+          </ScrollView>
         </View>
         <View style={styles.clearButtonContainer}>
-          <Button title="Clear Cart" onPress={clearCart} /> 
+          <Button title="Clear Cart" onPress={clearCart} />
         </View>
-        <Button
-              title='Checkout'
-              onPress={() => order(200)} // PRICE HERE
-            />
-      </View>
-    </ScrollView>
+        <View style={styles.paymentContainer}>
+          <Text style={styles.paymentText}>Payment</Text>
+          <View style={styles.paymentButtonContainer}>
+            <Button title="Pay with Stripe" onPress={() => order(totalPrice)} />
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center'
-  },
-  headerText: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginLeft: 60,
-    marginTop: 60,
-  },
-  listText: {
-    fontSize: 16,
-    color: 'dodgerblue',
-    fontWeight: 'bold',
-    marginLeft: 180,
-    marginTop: 130
-  },
-  text: {
-    fontSize: 16,
-    color: 'black',
-    fontWeight: 'bold',
-    marginLeft: 10,
-  },
-  text2: {
-    alignItems: 'baseline',
-    fontSize: 20,
-    color: colors.primary,
-    fontWeight: 'bold',
-    marginLeft: 10
-  },
-  card: {
-    backgroundColor: 'white',
-    flexDirection: 'row'
-  },
-  clearButtonContainer: {
-    marginBottom: 20,
-    marginHorizontal: 20
-  },
+container: {
+alignItems: 'center',
+paddingVertical: 20,
+},
+headerText: {
+fontSize: 24,
+fontWeight: 'bold',
+marginBottom: 20,
+},
+totalAmountContainer: {
+flexDirection: 'row',
+alignItems: 'center',
+marginBottom: 20,
+},
+totalAmountText: {
+fontSize: 18,
+marginRight: 10,
+},
+totalAmount: {
+fontSize: 18,
+fontWeight: 'bold',
+},
+itemsContainer: {
+marginBottom: 20,
+},
+card: {
+backgroundColor: colors.white,
+borderRadius: 10,
+marginHorizontal: 10,
+marginBottom: 20,
+width: cardWidth,
+},
+cardImage: {
+height: 100,
+borderTopLeftRadius: 10,
+borderTopRightRadius: 10,
+},
+cardInfo: {
+padding: 10,
+},
+cardTitle: {
+fontSize: 16,
+fontWeight: 'bold',
+marginBottom: 5,
+},
+cardPrice: {
+fontSize: 14,
+color: colors.grey,
+},
+clearButtonContainer: {
+marginBottom: 20,
+},
+paymentContainer: {
+alignItems: 'center',
+},
+paymentText: {
+fontSize: 20,
+fontWeight: 'bold',
+marginBottom: 10,
+},
+paymentButtonContainer: {
+marginTop: 10,
+},
 });
 
 export default Cart;
