@@ -6,13 +6,12 @@ import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { useNavigation } from '@react-navigation/core';
 import Email from '../Email';
 import Password from '../Password';
+import colors from '../config/colors';
 
 const SignUp = () => {
   const { email, setEmail } = Email();
   const { password, setPassword } = Password();
   const navigation = useNavigation();
-  const [first, setFirst] = useState('');
-  const [last, setLast] = useState('');
   const goToSignIn = () => {
     navigation.navigate('SignIn');
   };
@@ -69,16 +68,6 @@ const SignUp = () => {
         onPress={goToSignIn}
         style={{ marginTop: 10 }}
       />
-      <TextInput
-        placeholder='First Name'
-        onChangeText={first => setFirst(first)}
-        defaultValue={first}
-      />
-      <TextInput
-        placeholder='Last Name'
-        onChangeText={last => setLast(last)}
-        defaultValue={last}
-      />
     </View>
   );
 };
@@ -90,7 +79,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   inputContainer: {
-    margin: 30,
+    margin: 20,
     width: '80%',
     alignItems: 'center',
   },
@@ -106,11 +95,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     alignItems: 'center',
     paddingVertical: 20,
+    color: colors.primary,
   },
   logo: {
     width: 100,
     height: 100,
-    marginTop: 30,
+    //marginTop: 30,
     alignSelf: 'center',
   },
 });

@@ -2,16 +2,25 @@ import React, { useState, useContext } from 'react'
 import { View, Image, ImageBackground, Text, StyleSheet, ScrollView} from 'react-native'
 import Button from '../components/Button';
 import { Context } from '../Context';
-
+import { Favs } from '../Context'
+import { TouchableHighlight } from 'react-native-gesture-handler';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const Item = ({route, navigation}) => {
 
     const [context, setContext] = useContext(Context)
+    const [favs, setFavs] = useContext(Favs) 
     const {source, name, price, description} = route.params;
     
    
     console.log("cart items", context)
     const item = {
+        source: source,
+        name: name,
+        price: price,
+        description: description,
+    };
+    const favorites = {
         source: source,
         name: name,
         price: price,
@@ -55,6 +64,19 @@ const Item = ({route, navigation}) => {
                         onPress={() => setContext([...context,item])}
                 />
                 )}
+                <View>
+                {(favs.some(a => a['name'] === favorites.name)) ? (
+                     <TouchableHighlight style
+                        title="Remove from Favorites"
+                        onPress={() => setFavs(favs.filter((b) => b.name !== favorites.name))}
+                 />
+                ):(
+                     <TouchableHighlight
+                        title="Add to Favorites"
+                        onPress={() => setFavs([...favs,favorites])}
+                />
+                )}
+                </View>
             </View>
         </ScrollView>
     )

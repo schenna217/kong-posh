@@ -3,9 +3,9 @@ import { Image, View, Text, StyleSheet, ScrollView, Dimensions } from 'react-nat
 import Button from '../components/Button';
 import { Context } from '../Context';
 import colors from '../config/colors';
-import Item from './Item';
-import RestaurantCard, { setDescription } from '../components/RestaurantCard';
-import { useStripe } from '@stripe/stripe-react-native';
+import Item from './Item'
+import RestaurantCard, { setDescription } from '../components/RestaurantCard'
+import { useStripe } from '@stripe/stripe-react-native'
 
 const { width } = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
@@ -30,9 +30,11 @@ const Cart = ({ route, navigation }) => {
     setTotalPrice(0);
   };
 
-   // Code for Stripe Payment Page
-  // KEEP THIS
-  const stripe = useStripe();
+// Code for Stripe Payment Page
+const stripe = useStripe();
+
+const order = async (amount) => {
+  try{
 
       const response = await fetch("https://web-production-4123.up.railway.app/api/carbon-back/order", {
         method: "POST",
@@ -40,24 +42,20 @@ const Cart = ({ route, navigation }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          amount: amount,
+          amount, uid: 'john@gmail.com'
         }),
       });
-      const { client_secret } = await response.json();
-      const result = await stripe.confirmPayment({
-        clientSecret: client_secret,
-        paymentMethodId: 'pm_card_visa', // Replace with the ID of your payment method
-      });
-      if (result.error) {
-        console.log(result.error);
-      } else {
-        console.log(result);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+      const data = await response.json();
+      const initSheet = await stripe.initPaymentSheet({
+        paymentIntentClientSecret: data.clientSecret,
+        merchantDisplayName: 'KongPosh'
+    });
+    const presentSheet = await stripe.presentPaymentSheet();
+  } catch (err) {
+    console.log(err);  }
   };
 
+// Code for the buttons and view
   return (
     <View style={styles.container}>
       <ScrollView>

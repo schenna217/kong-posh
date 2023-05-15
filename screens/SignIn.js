@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword } from '@firebase/auth';
 import { useNavigation } from '@react-navigation/core';
 import Email from '../Email';
 import Password from '../Password';
+import colors from '../config/colors';
 
 const SignIn = () => {
 
@@ -43,7 +44,7 @@ const SignIn = () => {
                 source={require('../assets/icons/logoHead.png')}
                 style={styles.logo}
             />
-            <Text style = {styles.welcomeText}>Welcome back to Kong Posh!</Text>
+            <Text style = {styles.welcomeText}>Welcome Back to Kong Posh!</Text>
             {/* <Text>Please sign in</Text> */}
             <View style = {styles.inputContainer}>
                 <TextInput
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
       fontSize: 24,
       alignItems: 'center',
       paddingVertical: 20,
+      color: colors.primary,
     },
     logo: {
       width: 100,

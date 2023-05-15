@@ -13,6 +13,7 @@ import Drinks from '../config/Drinks';
 import Snacks from '../config/Snacks';
 import Desserts from '../config/Desserts';
 import { Context } from '../Context';
+
 export default function Menu({navigation}){
     const [context, setContext] = useContext(Context)
     const[selectedCategoryIndex, setSelectedCategoryIndex] = React.useState(0);
@@ -33,6 +34,7 @@ export default function Menu({navigation}){
     }
     const CategoryList = () => {
       return (
+      // Code for the scrollable categories component
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
