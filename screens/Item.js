@@ -41,7 +41,7 @@ const Item = ({route, navigation}) => {
                         {description}
                     </Text>
                     <Text>
-                        {price}
+                        ${price}
                     </Text>
                 </View>
                 {(context.some(e => e['name'] === item.name)) ? (
@@ -78,7 +78,9 @@ const styles = StyleSheet.create({
         fontSize: 25
     }, details: {
         alignItems: 'center',
-        marginBottom: 50
+        marginBottom: 50,
+        marginLeft: 20,
+        marginRight: 20,
     }, descriptionText: {
         fontSize: 12,
         paddingHorizontal: 20,

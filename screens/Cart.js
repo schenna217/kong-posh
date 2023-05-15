@@ -17,9 +17,9 @@ const Cart = ({ route, navigation }) => {
 
   // useEffect hook to update the totalPrice state based on the items in the context state
   useEffect(() => {
-    let sum = 0;
+    let sum = 0.0;
     context.forEach(item => {
-      sum += item.price;
+      sum +=  parseFloat(item.price);
     });
     setTotalPrice("$" + sum); // format the sum variable to a fixed decimal point number with 2 digits after the decimal and prepend the "$" symbol
   }, [context]);
@@ -72,7 +72,7 @@ const order = async (amount) => {
                 <Image source={item.source} style={styles.cardImage} />
                 <View style={styles.cardInfo}>
                   <Text style={styles.cardTitle}>{item.name}</Text>
-                  <Text style={styles.cardPrice}>{item.price}</Text>
+                  <Text style={styles.cardPrice}>${item.price}</Text>
                 </View>
               </View>
             ))}
@@ -95,17 +95,20 @@ const order = async (amount) => {
 const styles = StyleSheet.create({
 container: {
 alignItems: 'center',
-paddingVertical: 20,
+marginTop: 100,
+
 },
 headerText: {
-fontSize: 24,
+fontSize: 28,
 fontWeight: 'bold',
 marginBottom: 20,
+marginLeft: 15,
 },
 totalAmountContainer: {
 flexDirection: 'row',
 alignItems: 'center',
 marginBottom: 20,
+marginLeft: 15,
 },
 totalAmountText: {
 fontSize: 18,
